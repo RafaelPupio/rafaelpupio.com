@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Rafael Pupio Vieira — AI Engineer building agents & automation on 10+ years in administration, operations & financial operations.">
+<title>Rafael Pupio Vieira</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;500;700&family=Archivo:wght@400;500;700&display=swap">
+<style>
+  /* ============================================================
+     RAFAEL PUPIO — MANIFEST × LEDGER
+     concrete #B4B2AA · ink #211F1C · safety orange #FF4D00 · paper #C6C4BC
+     Saira Stencil One (heads) · Bebas Neue (numerals/titles) · IBM Plex Mono (data) · Archivo (body)
+     ============================================================ */
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#B4B2AA; color:#211F1C;
+    font-family:'Archivo','Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .wrap { max-width:1160px; margin:0 auto; padding:0 24px; }
+  :focus-visible { outline:3px solid #FF4D00; outline-offset:2px; }
+  a { color:inherit; }
+
+  /* ---------- top strip ---------- */
+  #topbar {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:#211F1C; color:#B4B2AA;
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em;
+    display:flex; align-items:center; text-transform:uppercase;
+    border-bottom:2px solid #211F1C;
+  }
+  #topbar .id { padding:11px 16px; font-weight:700; white-space:nowrap; }
+  #topbar nav { display:flex; margin-left:auto; }
+  #topbar nav a {
+    padding:11px 14px; text-decoration:none; border-left:2px solid rgba(180,178,170,.25);
+    white-space:nowrap;
+  }
+  #topbar nav a:hover { background:#FF4D00; color:#211F1C; }
+  #langdd { position:relative; display:flex; }
+  #langbtn {
+    display:flex; align-items:center; gap:8px; cursor:pointer;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase;
+    background:#FF4D00; color:#211F1C; border:none; padding:0 14px;
+  }
+  #langbtn:hover, #langbtn[aria-expanded="true"] { background:#B4B2AA; }
+  #langbtn .car { font-size:9px; }
+  .flag { width:22px; height:15px; display:block; outline:2px solid #211F1C; flex:none; }
+  #langmenu {
+    position:absolute; top:100%; right:0; z-index:200; min-width:210px;
+    background:#211F1C; border:3px solid #FF4D00; display:grid;
+  }
+  #langmenu button {
+    display:flex; align-items:center; gap:10px; cursor:pointer; text-align:left;
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:700;
+    letter-spacing:.08em; background:transparent; color:#B4B2AA; border:none;
+    padding:11px 14px; border-bottom:1px solid rgba(180,178,170,.2); width:100%;
+  }
+  #langmenu button:last-child { border-bottom:none; }
+  #langmenu button:hover, #langmenu button.cur { background:#FF4D00; color:#211F1C; }
+  #langmenu button .flag { outline-color:#B4B2AA; }
+  #langmenu button:hover .flag, #langmenu button.cur .flag { outline-color:#211F1C; }
+  @media (max-width:700px){
+    #topbar .id { display:none; }
+    #topbar nav { margin:0 auto; }
+    #topbar nav a { padding:11px 10px; font-size:10px; border-left:none; }
+    #langbtn { padding:0 10px; font-size:11px; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    position:relative; overflow:hidden; padding:110px 0 60px;
+    border-bottom:4px solid #211F1C;
+  }
+  .coords {
+    position:absolute; inset:0; pointer-events:none; overflow:hidden;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.2em;
+    color:rgba(33,31,28,.26);
+  }
+  .coords .row { white-space:nowrap; padding:14px 0; animation:drift 70s linear infinite; }
+  .coords .row:nth-child(even){ animation-duration:95s; animation-direction:reverse; }
+  @keyframes drift { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  .stencil {
+    font-family:'Saira Stencil One','Archivo',sans-serif;
+    font-size:clamp(60px,12.5vw,182px); line-height:.92; text-transform:uppercase;
+    position:relative;
+  }
+  .cleared {
+    font-family:'IBM Plex Mono',monospace; font-weight:700;
+    font-size:clamp(12px,1.5vw,17px); letter-spacing:.26em; text-transform:uppercase;
+    margin-top:28px; display:flex; flex-wrap:wrap; gap:12px 24px; align-items:center; position:relative;
+  }
+  .cleared .code { border:2px solid #211F1C; padding:6px 12px; }
+  .subline {
+    font-family:'IBM Plex Mono',monospace; font-size:clamp(12px,1.4vw,15px);
+    letter-spacing:.1em; margin-top:24px; text-transform:uppercase; position:relative; max-width:60ch; line-height:2;
+  }
+  .subline b { background:#211F1C; color:#B4B2AA; padding:2px 8px; font-weight:500; }
+  .subline .hot { background:#FF4D00; color:#211F1C; padding:2px 8px; }
+
+  .stamp {
+    position:absolute; right:4vw; top:15vh;
+    font-family:'Saira Stencil One',sans-serif; text-transform:uppercase;
+    color:#FF4D00; border:5px solid #FF4D00; padding:10px 22px;
+    font-size:clamp(17px,2.8vw,32px); letter-spacing:.1em;
+    transform:rotate(-12deg); opacity:0; mix-blend-mode:multiply;
+  }
+  .stamp.stamped { animation:stampin .32s steps(3) forwards; }
+  @keyframes stampin {
+    0%{ opacity:0; transform:rotate(-12deg) scale(2.4); }
+    100%{ opacity:.92; transform:rotate(-12deg) scale(1); }
+  }
+
+  /* ledger totals strip in hero */
+  .totals {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    border:3px solid #211F1C; margin-top:52px; background:#211F1C; gap:3px; position:relative;
+  }
+  .tot { background:#BDBBB3; padding:16px 16px 18px; }
+  .tot .v {
+    font-family:'Bebas Neue','Anton',sans-serif; font-size:clamp(40px,5.5vw,66px);
+    line-height:1; font-variant-numeric:tabular-nums;
+  }
+  .tot .v .unit { color:#FF4D00; }
+  .tot .k {
+    font-family:'IBM Plex Mono',monospace; font-size:10.5px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; margin-top:7px; opacity:.75;
+  }
+
+  /* ---------- keyword ticker ---------- */
+  .ticker {
+    border-bottom:4px solid #211F1C; overflow:hidden;
+    background:#FF4D00; color:#211F1C;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13.5px;
+    letter-spacing:.14em; text-transform:uppercase;
+  }
+  .ticker .in { display:inline-block; white-space:nowrap; padding:11px 0; animation:tick 32s linear infinite; }
+  @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  @media (prefers-reduced-motion:reduce){
+    .coords .row, .ticker .in { animation:none; }
+  }
+
+  /* ---------- section heads (folio) ---------- */
+  section.folio { padding:84px 0 10px; }
+  .sechead {
+    display:flex; align-items:baseline; justify-content:space-between; gap:16px;
+    padding-bottom:12px; border-bottom:6px double #211F1C;
+  }
+  .sechead h2 {
+    font-family:'Saira Stencil One',sans-serif; text-transform:uppercase;
+    font-size:clamp(34px,6vw,80px); line-height:1;
+  }
+  .sechead .fol {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700;
+    letter-spacing:.22em; color:#FF4D00; white-space:nowrap;
+  }
+  .secnote {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; padding:14px 4px 0; opacity:.7; max-width:70ch; line-height:1.9;
+  }
+
+  /* ---------- build entries: manifest card × ledger row ---------- */
+  .entry {
+    border:4px solid #211F1C; margin-top:34px; background:#BDBBB3; position:relative;
+    opacity:0; transform:scale(1.06);
+  }
+  .entry.in { animation:cardstamp .3s steps(3) forwards; }
+  @keyframes cardstamp { to { opacity:1; transform:scale(1); } }
+  .entry .e-head {
+    display:grid; grid-template-columns:76px 1fr auto; gap:16px; align-items:baseline;
+    padding:24px 22px 6px;
+  }
+  .entry .e-no {
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13px;
+    color:#FF4D00; letter-spacing:.12em;
+  }
+  .entry h3 {
+    font-family:'Bebas Neue',sans-serif; font-weight:400;
+    font-size:clamp(30px,4.4vw,54px); line-height:.95; letter-spacing:.015em;
+  }
+  .entry .e-status {
+    font-family:'Saira Stencil One',sans-serif; font-size:14px; letter-spacing:.1em;
+    border:3px solid #211F1C; padding:4px 10px; transform:rotate(5deg);
+    text-transform:uppercase; white-space:nowrap; align-self:start; justify-self:end;
+  }
+  .entry .e-status.hot { color:#FF4D00; border-color:#FF4D00; }
+  .entry:hover .e-status { transform:rotate(-4deg); }
+  .entry .e-sum {
+    grid-column:2 / -1; font-size:15.5px; line-height:1.65; max-width:66ch; padding-top:8px;
+  }
+  .entry .e-rows { margin:18px 22px 0; border-top:2px solid #211F1C; }
+  .entry .e-row {
+    display:grid; grid-template-columns:150px 1fr; gap:14px;
+    padding:11px 4px; border-bottom:2px solid rgba(33,31,28,.35);
+    font-family:'IBM Plex Mono',monospace; font-size:12.5px; line-height:1.8; letter-spacing:.02em;
+  }
+  .entry .e-row .rk { font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:#FF4D00; }
+  .entry .e-row b { font-weight:700; }
+  .entry .e-tags { display:flex; flex-wrap:wrap; gap:8px; padding:18px 22px 24px; }
+  .entry .e-tags span {
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700;
+    letter-spacing:.12em; text-transform:uppercase;
+    border:2px solid #211F1C; padding:5px 10px;
+  }
+  .entry .e-tags span:hover { background:#211F1C; color:#B4B2AA; }
+  @media (max-width:640px){
+    .entry .e-head { grid-template-columns:1fr; gap:8px; }
+    .entry .e-status { justify-self:start; margin-top:4px; }
+    .entry .e-sum { grid-column:1; }
+    .entry .e-row { grid-template-columns:1fr; gap:2px; }
+  }
+
+  /* ---------- shipping log: repo cards ---------- */
+  .sync {
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700;
+    letter-spacing:.18em; text-transform:uppercase; color:#FF4D00;
+    padding:14px 4px 0; display:block;
+  }
+  .repo-grid {
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:3px; background:#211F1C; border:4px solid #211F1C; margin-top:34px;
+  }
+  .repo {
+    background:#BDBBB3; padding:22px 20px 24px; position:relative;
+    opacity:0; transform:scale(1.06); display:flex; flex-direction:column; gap:12px;
+  }
+  .repo.in { animation:cardstamp .3s steps(3) forwards; }
+  .repo h3 {
+    font-family:'Bebas Neue',sans-serif; font-weight:400;
+    font-size:clamp(26px,3vw,36px); line-height:.95; letter-spacing:.02em;
+    padding-right:86px;
+  }
+  .repo h3 a { text-decoration:none; }
+  .repo h3 a:hover { color:#FF4D00; }
+  .repo .r-meta {
+    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; color:#FF4D00;
+  }
+  .repo p { font-size:14px; line-height:1.65; max-width:60ch; }
+  .repo .r-tags { display:flex; flex-wrap:wrap; gap:7px; margin-top:auto; padding-top:6px; }
+  .repo .r-tags span {
+    font-family:'IBM Plex Mono',monospace; font-size:10px; font-weight:700;
+    letter-spacing:.1em; text-transform:uppercase; border:2px solid #211F1C; padding:4px 8px;
+  }
+  .repo .r-tags span:hover { background:#211F1C; color:#B4B2AA; }
+  .repo .r-stamp {
+    position:absolute; top:18px; right:16px;
+    font-family:'Saira Stencil One',sans-serif; font-size:12px; letter-spacing:.1em;
+    border:3px solid #211F1C; padding:3px 8px; transform:rotate(6deg); text-transform:uppercase;
+  }
+  .repo .r-stamp.hot { color:#FF4D00; border-color:#FF4D00; }
+  .repo:hover .r-stamp { transform:rotate(-4deg); }
+  .repo a.inspect {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700;
+    letter-spacing:.14em; text-transform:uppercase; text-decoration:none;
+    border-bottom:3px solid #FF4D00; align-self:flex-start;
+  }
+  .repo a.inspect:hover { background:#FF4D00; }
+  .repo.lab { background:#211F1C; color:#B4B2AA; }
+  .repo.lab .r-tags span { border-color:#B4B2AA; }
+  .repo.lab .r-tags span:hover { background:#B4B2AA; color:#211F1C; }
+  .repo.lab .r-stamp { border-color:#FF4D00; color:#FF4D00; }
+
+  /* ---------- method terminal ---------- */
+  .term {
+    background:#211F1C; color:#B4B2AA; border:4px solid #211F1C;
+    margin-top:34px; font-family:'IBM Plex Mono',monospace;
+  }
+  .term .t-bar {
+    display:flex; gap:8px; padding:10px 14px; border-bottom:2px solid rgba(180,178,170,.3);
+    font-size:11px; letter-spacing:.15em; text-transform:uppercase; align-items:center;
+  }
+  .term .t-bar .dot { width:10px; height:10px; background:#FF4D00; }
+  .term pre {
+    padding:22px 20px 28px; font-size:13.5px; line-height:2; overflow-x:auto;
+    white-space:pre-wrap; word-break:break-word;
+  }
+  .term .p { color:#FF4D00; font-weight:700; }
+  .term .ok { color:#8FD48A; }
+  .term .dim { opacity:.65; }
+  .term .caret { display:inline-block; width:9px; height:16px; background:#FF4D00; vertical-align:-3px; animation:blink 1s steps(1) infinite; }
+  @keyframes blink { 50%{opacity:0} }
+  @media (prefers-reduced-motion:reduce){ .term .caret { animation:none; } }
+
+  /* ---------- certs: ledger rows with stamps ---------- */
+  .lrow {
+    display:grid; grid-template-columns:70px 1fr auto; align-items:baseline; gap:18px;
+    padding:22px 4px; border-bottom:2px solid #211F1C;
+    opacity:0; transform:translateX(-28px);
+  }
+  .lrow.in { animation:slidein .28s cubic-bezier(.2,0,0,1) forwards; }
+  @keyframes slidein { to { opacity:1; transform:none; } }
+  .lrow .rno {
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:13px;
+    color:#FF4D00; letter-spacing:.1em;
+  }
+  .lrow .rmain b {
+    font-family:'Bebas Neue',sans-serif; font-weight:400;
+    font-size:clamp(24px,3.2vw,38px); letter-spacing:.02em; line-height:1;
+  }
+  .lrow .rmain p { font-size:14.5px; line-height:1.6; max-width:58ch; margin-top:6px; }
+  .lrow .rval {
+    font-family:'Saira Stencil One',sans-serif; font-size:13px;
+    letter-spacing:.1em; text-transform:uppercase; white-space:nowrap;
+    border:3px solid #211F1C; padding:3px 9px; transform:rotate(4deg);
+  }
+  .lrow .rval.hot { color:#FF4D00; border-color:#FF4D00; }
+  .lrow:hover .rval { transform:rotate(-3deg); }
+  .lrow:hover { background:rgba(255,77,0,.07); }
+  @media (max-width:640px){
+    .lrow { grid-template-columns:44px 1fr; }
+    .lrow .rval { grid-column:2; justify-self:start; margin-top:8px; }
+  }
+
+  /* ---------- footer ---------- */
+  footer {
+    background:#211F1C; color:#B4B2AA; padding:80px 0 100px; margin-top:100px;
+    border-top:4px solid #211F1C;
+  }
+  footer .stencil { font-size:clamp(40px,8vw,120px); }
+  footer .eyebrow {
+    font-family:'IBM Plex Mono',monospace; font-size:12px; font-weight:700;
+    letter-spacing:.3em; text-transform:uppercase; color:#FF4D00; margin-bottom:16px;
+  }
+  footer a.mail {
+    display:inline-block; margin-top:32px; text-decoration:none;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; letter-spacing:.12em;
+    font-size:clamp(14px,2vw,19px); color:#211F1C; background:#FF4D00;
+    padding:14px 22px; border:3px solid #FF4D00;
+  }
+  footer a.mail:hover { background:transparent; color:#FF4D00; }
+  footer .note {
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.2em;
+    text-transform:uppercase; opacity:.55; margin-top:38px;
+  }
+  /* contact form */
+  #contactform {
+    margin-top:36px; max-width:640px; display:grid; gap:14px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  #contactform label {
+    font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    display:grid; gap:7px;
+  }
+  #contactform input, #contactform textarea {
+    font-family:'IBM Plex Mono',monospace; font-size:14px; color:#B4B2AA;
+    background:transparent; border:3px solid #B4B2AA; padding:12px 14px;
+    letter-spacing:.02em; width:100%;
+  }
+  #contactform input:focus, #contactform textarea:focus {
+    outline:none; border-color:#FF4D00;
+  }
+  #contactform textarea { min-height:120px; resize:vertical; }
+  #contactform button {
+    font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:15px;
+    letter-spacing:.14em; text-transform:uppercase; cursor:pointer;
+    color:#211F1C; background:#FF4D00; border:3px solid #FF4D00;
+    padding:14px 22px; justify-self:start;
+  }
+  #contactform button:hover { background:transparent; color:#FF4D00; }
+  #contactform .formnote {
+    font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; opacity:.55;
+  }
+  footer .socials { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+  footer .socials a {
+    display:inline-block; text-decoration:none;
+    font-family:'IBM Plex Mono',monospace; font-weight:700; letter-spacing:.12em;
+    font-size:14px; color:#B4B2AA; border:3px solid #B4B2AA; padding:12px 18px;
+  }
+  footer .socials a:hover { border-color:#FF4D00; color:#FF4D00; }
+</style>
+</head>
+<body>
+<header id="topbar">
+  <span class="id">Rafael Pupio Vieira · AI Engineer</span>
+  <nav>
+    <a href="#builds">Builds</a>
+    <a href="#repos">Repos</a>
+    <a href="#method">Method</a>
+    <a href="#certs">Credentials</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div id="langdd">
+    <button id="langbtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Language">
+      <span class="fwrap"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#B22234"/><g fill="#fff"><rect y="2.3" width="24" height="2.3"/><rect y="6.9" width="24" height="2.3"/><rect y="11.5" width="24" height="2.3"/></g><rect width="10" height="8" fill="#3C3B6E"/></svg></span>
+      <span class="lcode">EN</span><span class="car">▼</span>
+    </button>
+    <div id="langmenu" role="listbox" aria-label="Languages" hidden>
+      <button role="option" data-lang="en" data-code="EN" class="cur"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#B22234"/><g fill="#fff"><rect y="2.3" width="24" height="2.3"/><rect y="6.9" width="24" height="2.3"/><rect y="11.5" width="24" height="2.3"/></g><rect width="10" height="8" fill="#3C3B6E"/></svg>English</button>
+      <button role="option" data-lang="pt" data-code="PT-BR"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#009C3B"/><polygon points="12,1.5 22.5,8 12,14.5 1.5,8" fill="#FFDF00"/><circle cx="12" cy="8" r="3.4" fill="#002776"/></svg>Português (BR)</button>
+      <button role="option" data-lang="es" data-code="ES"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="16" fill="#AA151B"/><rect y="4" width="24" height="8" fill="#F1BF00"/></svg>Español</button>
+      <button role="option" data-lang="fr" data-code="FR"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#0055A4"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#EF4135"/></svg>Français</button>
+      <button role="option" data-lang="de" data-code="DE"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="5.3" fill="#151515"/><rect y="5.3" width="24" height="5.3" fill="#DD0000"/><rect y="10.6" width="24" height="5.4" fill="#FFCE00"/></svg>Deutsch</button>
+      <button role="option" data-lang="it" data-code="IT"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="8" height="16" fill="#009246"/><rect x="8" width="8" height="16" fill="#fff"/><rect x="16" width="8" height="16" fill="#CE2B37"/></svg>Italiano</button>
+      <button role="option" data-lang="pl" data-code="PL"><svg class="flag" viewBox="0 0 24 16" aria-hidden="true"><rect width="24" height="8" fill="#F5F5F5"/><rect y="8" width="24" height="8" fill="#DC143C"/></svg>Polski</button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="coords" aria-hidden="true">
+    <div class="row">CONSIGNMENT: AGENTS / AUTOMATION / DEEP LEARNING — CONTEXT LOADED — BUILD DAILY — CONSIGNMENT: AGENTS / AUTOMATION / DEEP LEARNING — CONTEXT LOADED — BUILD DAILY — CONSIGNMENT: AGENTS / AUTOMATION / DEEP LEARNING — CONTEXT LOADED — BUILD DAILY —</div>
+    <div class="row">GRU ✈ MXP ✈ JFK — 23°26′S 46°28′W — 45°37′N 08°43′E — 40°38′N 73°46′W — GRU ✈ MXP ✈ JFK — 23°26′S 46°28′W — 45°37′N 08°43′E — 40°38′N 73°46′W — GRU ✈ MXP ✈ JFK —</div>
+    <div class="row">$ claude — plan → context → build → verify → ship — $ claude — plan → context → build → verify → ship — $ claude — plan → context → build → verify → ship — $ claude — plan → context → build → verify → ship —</div>
+  </div>
+  <div class="wrap">
+    <h1 class="stencil" style="font-size:clamp(52px,10.5vw,150px)">Rafael<br>Pupio<br>Vieira</h1>
+    <div class="cleared">
+      <span>Work authorization — no visa needed:</span>
+      <span class="code">US</span>
+      <span class="code">Brazil</span>
+      <span class="code">EU·27 + EEA</span>
+      <span class="code">Switzerland</span>
+    </div>
+    <p class="subline" style="margin-top:14px;opacity:.8">US · Italian · Brazilian citizen — plus simplified Mercosur residency rights across South America</p>
+    <p class="subline"><b>AI Engineer</b> building <span class="hot">agents &amp; automation</span> on <b>10+ years</b> in administration, operations &amp; financial operations</p>
+    <div class="totals">
+      <div class="tot"><div class="v"><span data-count="10">0</span><span class="unit">+</span></div><div class="k">Yrs admin · ops · financial ops</div></div>
+      <div class="tot"><div class="v"><span data-count="3">0</span></div><div class="k">AI certifications</div></div>
+      <div class="tot"><div class="v"><span data-count="3">0</span></div><div class="k">Citizenships</div></div>
+      <div class="tot"><div class="v"><span data-count="1">0</span></div><div class="k">Trading agent — retrains daily</div></div>
+    </div>
+  </div>
+  <div class="stamp" id="herostamp">Builds Daily</div>
+</section>
+
+<!-- ================= KEYWORD TICKER ================= -->
+<div class="ticker" aria-hidden="true">
+  <span class="in">AGENTIC WORKFLOWS ▲ RAG · PGVECTOR ▲ CONTEXT ENGINEERING ▲ CLAUDE CODE ▲ PYTHON ▲ TYPESCRIPT · NEXT.JS ▲ DEEP LEARNING ▲ PROMPT ENGINEERING ▲ LLM MEMORY ▲ AUTOMATION ▲ FP&amp;A DOMAIN ▲ EN·PT·IT ▲ AGENTIC WORKFLOWS ▲ RAG · PGVECTOR ▲ CONTEXT ENGINEERING ▲ CLAUDE CODE ▲ PYTHON ▲ TYPESCRIPT · NEXT.JS ▲ DEEP LEARNING ▲ PROMPT ENGINEERING ▲ LLM MEMORY ▲ AUTOMATION ▲ FP&amp;A DOMAIN ▲ EN·PT·IT ▲ </span>
+</div>
+
+<!-- ================= FOLIO 01 : BUILDS ================= -->
+<section class="folio" id="builds">
+  <div class="wrap">
+    <div class="sechead"><h2>The Builds</h2><span class="fol">FOLIO 01</span></div>
+    <p class="secnote">Live cargo — what I'm building, how the AI is actually applied, and what it runs on.</p>
+
+    <article class="entry" data-reveal>
+      <div class="e-head">
+        <span class="e-no">001</span>
+        <h3>Daily-Learning Trading Agent</h3>
+        <span class="e-status hot">In Build</span>
+        <p class="e-sum">An end-to-end AI day-trading R&amp;D pipeline. The core is a deep-learning agent architected to retrain on every trading session — each day's market data feeds the next day's model, so the system compounds instead of going stale. Claude Code operates as an active engineering partner across architecture, code, and research.</p>
+      </div>
+      <div class="e-rows">
+        <div class="e-row"><span class="rk">AI applied</span><span>Deep-learning agent design · daily retraining loop · agentic engineering with Claude Code driving architecture &amp; implementation</span></div>
+        <div class="e-row"><span class="rk">Domain edge</span><span>Market structure &amp; risk framed by 10+ years of FP&amp;A discipline — the model's objectives are set by someone who has owned a P&amp;L forecast</span></div>
+        <div class="e-row"><span class="rk">Status</span><span><b>Active R&amp;D</b> — architecture documented, agent in iterative build</span></div>
+      </div>
+      <div class="e-tags">
+        <span>Deep Learning</span><span>Agent Architecture</span><span>Retraining Pipeline</span><span>Claude Code</span><span>Agentic Engineering</span><span>Quant Research</span>
+      </div>
+    </article>
+
+    <article class="entry" data-reveal>
+      <div class="e-head">
+        <span class="e-no">002</span>
+        <h3>Persistent Context System</h3>
+        <span class="e-status">Shipped</span>
+        <p class="e-sum">The knowledge layer that makes the trading agent buildable: TRADING-KNOWLEDGE.md and DAILY-LEARNING-AGENT.md — foundational documentation engineered as durable LLM context. Dropped into the project repo, they brief every fresh Claude session on the domain, the architecture, and the decisions already made. No re-explaining, no drift.</p>
+      </div>
+      <div class="e-rows">
+        <div class="e-row"><span class="rk">AI applied</span><span>Context engineering · documentation-as-memory · repo-native knowledge base that turns a stateless model into a briefed teammate</span></div>
+        <div class="e-row"><span class="rk">Why it matters</span><span>Agentic projects live or die on context quality — this is the difference between an assistant and a collaborator</span></div>
+        <div class="e-row"><span class="rk">Status</span><span><b>Shipped</b> — in daily use powering build 001</span></div>
+      </div>
+      <div class="e-tags">
+        <span>Context Engineering</span><span>LLM Memory</span><span>Knowledge Base Design</span><span>Prompt Engineering</span><span>Docs-as-Code</span>
+      </div>
+    </article>
+
+    <article class="entry" data-reveal>
+      <div class="e-head">
+        <span class="e-no">003</span>
+        <h3>This Site</h3>
+        <span class="e-status hot">Live</span>
+        <p class="e-sum">You're looking at build 003. Hand-rolled HTML, CSS and JavaScript — zero frameworks, zero templates — shipped through an agentic workflow: three competing design concepts prototyped live, headless-browser visual QA on every iteration, then this MANIFEST × LEDGER blend chosen and cut in a single working session.</p>
+      </div>
+      <div class="e-rows">
+        <div class="e-row"><span class="rk">AI applied</span><span>Agentic build loop — spec → concept prototypes → automated screenshot verification → ship · Claude as design &amp; engineering partner</span></div>
+        <div class="e-row"><span class="rk">Under the hood</span><span>Vanilla JS · IntersectionObserver reveals · CSS-only marquees · reduced-motion support · no dependencies</span></div>
+        <div class="e-row"><span class="rk">Status</span><span><b>Live</b> — and iterating</span></div>
+      </div>
+      <div class="e-tags">
+        <span>Agentic Workflow</span><span>Rapid Prototyping</span><span>Automated Visual QA</span><span>Vanilla JS</span><span>Motion Design</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ================= FOLIO 02 : SHIPPING LOG (auto-synced daily) ================= -->
+<section class="folio" id="repos">
+  <div class="wrap">
+    <div class="sechead"><h2>Shipping Log</h2><span class="fol">FOLIO 02</span></div>
+    <p class="secnote">Public repositories, pulled straight off the docks at <a href="https://github.com/RafaelPupio">github.com/RafaelPupio</a> and <a href="https://gitlab.com/RafaelPupio">gitlab.com/RafaelPupio</a>. Repo descriptions stay in English.</p>
+    <span class="sync" id="sync-date">Last sync: 2026-08-31 · Auto-refreshes daily</span>
+    <div class="repo-grid" id="repo-data">
+      <!-- REPO-CARDS:START -->
+      <article class="repo" data-reveal>
+        <span class="r-stamp hot">Tested</span>
+        <h3><a href="https://github.com/RafaelPupio/MORDOMO">MORDOMO</a></h3>
+        <span class="r-meta">TypeScript · 82 commits · GitHub</span>
+        <p>AI church secretary. A streaming chat interface driven by a single tool-using agent — knowledge search, calendar, prayer requests, human escalation — with RAG over pgvector and source citations. Document ingest runs as a multi-stage pipeline with extractor and verifier agents; back-office work (weekly AI reporting) goes multi-agent. Next.js · Postgres · Vercel AI SDK. Fully tested.</p>
+        <div class="r-tags"><span>AI Agents</span><span>RAG</span><span>pgvector</span><span>Tool Use</span><span>Multi-Agent Pipelines</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/MORDOMO">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
+        <span class="r-stamp">★ 1</span>
+        <h3><a href="https://github.com/RafaelPupio/ChurchChatBox">ChurchChatBox</a></h3>
+        <span class="r-meta">TypeScript · GitHub</span>
+        <p>Secretaria Virtual — a WhatsApp church secretary bot (pt-BR). Automates the secretarial front desk over the channel Brazilian communities actually use. Next.js · PostgreSQL · Drizzle ORM.</p>
+        <div class="r-tags"><span>WhatsApp Bot</span><span>Next.js</span><span>PostgreSQL</span><span>Drizzle</span><span>pt-BR</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/ChurchChatBox">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
+        <span class="r-stamp hot">Shipped</span>
+        <h3><a href="https://github.com/RafaelPupio/purged-walkforward">purged-walkforward</a></h3>
+        <span class="r-meta">Python 100% · GitHub</span>
+        <p>Purged, embargoed walk-forward cross-validation for time series with overlapping labels. Shuffled K-fold lies on temporal data — look-ahead bias and label-overlap leakage inflate scores. This is the NumPy-only, scikit-learn-compatible fix: walk-forward ordering, purging, embargo periods, uniqueness weighting. Honest validation for models that trade.</p>
+        <div class="r-tags"><span>Machine Learning</span><span>Time Series</span><span>Cross-Validation</span><span>scikit-learn</span><span>NumPy</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/purged-walkforward">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
+        <span class="r-stamp hot">On Watch</span>
+        <h3><a href="https://github.com/RafaelPupio/service-watchdog">service-watchdog</a></h3>
+        <span class="r-meta">Python 100% · GitHub</span>
+        <p>Single-file, cross-platform service monitoring. Checks what you tell it to check, repairs only what is actually down, and reports outward — a dead-man's switch means a dead machine still raises an alarm.</p>
+        <div class="r-tags"><span>DevOps</span><span>SRE</span><span>Monitoring</span><span>Self-Healing</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/service-watchdog">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
+        <span class="r-stamp">Live</span>
+        <h3><a href="https://github.com/RafaelPupio/landing-page-cav">landing-page-cav</a></h3>
+        <span class="r-meta">TypeScript · 91 commits · GitHub</span>
+        <p>Landing page for Comunidade Árvore da Vida (Lucas do Rio Verde, MT). Next.js 16 · React 19 · TypeScript, with all content in a single Zod-validated JSON config, a dev-only content editor, SEO and full accessibility. Tested and deploy-ready.</p>
+        <div class="r-tags"><span>Next.js 16</span><span>React 19</span><span>Zod</span><span>SEO</span><span>A11y</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/landing-page-cav">Inspect →</a>
+      </article>
+      <article class="repo lab" data-reveal>
+        <span class="r-stamp">Opening</span>
+        <h3><a href="https://gitlab.com/RafaelPupio" style="color:inherit">GitLab · @RafaelPupio</a></h3>
+        <span class="r-meta">New berth · GitLab</span>
+        <p>Manifest just opened at this port. Projects will appear in the log as they ship — this page re-checks the docks every day.</p>
+        <div class="r-tags"><span>GitLab</span><span>Incoming</span></div>
+        <a class="inspect" href="https://gitlab.com/RafaelPupio" style="color:inherit">Inspect →</a>
+      </article>
+      <!-- REPO-CARDS:END -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOLIO 03 : METHOD & STACK ================= -->
+<section class="folio" id="method">
+  <div class="wrap">
+    <div class="sechead"><h2>Method &amp; Stack</h2><span class="fol">FOLIO 03</span></div>
+    <p class="secnote">The tools, layer by layer — every line backed by a public repo you can open.</p>
+
+    <article class="entry in" style="opacity:1;transform:none">
+      <div class="e-rows" style="margin-top:22px">
+        <div class="e-row"><span class="rk">AI / ML</span><span>Deep-learning agent with a <b>daily retraining loop</b> (trading pipeline) · <b>RAG</b> over <b>PostgreSQL + pgvector</b> embeddings with source citations · multi-stage document ingest with <b>extractor → verifier agent chains</b> · tool-using agents on the <b>Vercel AI SDK</b> (knowledge search, calendar, human escalation) <span style="opacity:.65">→ MORDOMO, trading agent</span></span></div>
+        <div class="e-row"><span class="rk">ML Rigor</span><span><b>Purged &amp; embargoed walk-forward cross-validation</b> for overlapping-label time series — look-ahead bias and label-leakage control, uniqueness weighting; <b>NumPy</b>-only, <b>scikit-learn-compatible</b> API <span style="opacity:.65">→ purged-walkforward</span></span></div>
+        <div class="e-row"><span class="rk">Languages</span><span><b>Python</b> for ML and systems tooling · <b>TypeScript</b> end-to-end for product code</span></div>
+        <div class="e-row"><span class="rk">Backend / Data</span><span><b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · Next.js server routes · <b>Zod</b>-validated typed configs <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span></span></div>
+        <div class="e-row"><span class="rk">Frontend</span><span><b>Next.js 16</b> · <b>React 19</b> · SEO &amp; WCAG accessibility · dependency-free motion design in vanilla JS/CSS <span style="opacity:.65">→ landing-page-cav, this site</span></span></div>
+        <div class="e-row"><span class="rk">Agentic Eng.</span><span><b>Claude Code</b> as engineering partner — spec → persistent <b>.md context files</b> → plan-first build → <b>headless-browser visual QA</b> on every iteration <span style="opacity:.65">→ every repo above</span></span></div>
+        <div class="e-row"><span class="rk">Ops / SRE</span><span>Cross-platform <b>service monitoring</b> with self-healing restarts and a <b>dead-man's switch</b> — a dead machine still raises an alarm <span style="opacity:.65">→ service-watchdog</span></span></div>
+      </div>
+      <div style="height:20px"></div>
+    </article>
+
+    <div class="term">
+      <div class="t-bar"><span class="dot"></span><span class="dot" style="opacity:.5"></span><span class="dot" style="opacity:.25"></span> rafael@pipeline: ~ $ cat METHOD.md</div>
+      <pre><span class="p">01 SPEC</span>     <span class="dim">—</span> define the mission like an operator: scope, constraints, definition of done
+<span class="p">02 CONTEXT</span>  <span class="dim">—</span> engineer persistent .md knowledge files so every session starts fully briefed
+<span class="p">03 BUILD</span>    <span class="dim">—</span> pair with Claude Code: plan first, generate, review every change
+<span class="p">04 VERIFY</span>   <span class="dim">—</span> tests, screenshots, metrics — ship only what survives inspection
+<span class="ok">▸ edge: 10+ years inside administration, operations &amp; financial operations.
+▸ I don't build AI for demos — I build it for domains I've actually run.</span>
+<span class="p">$</span> <span class="caret"></span></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOLIO 03 : CREDENTIALS ================= -->
+<section class="folio" id="certs">
+  <div class="wrap">
+    <div class="sechead"><h2>Credentials</h2><span class="fol">FOLIO 04</span></div>
+    <p class="secnote">Full record on <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.</p>
+    <div>
+      <div class="lrow" data-reveal>
+        <span class="rno">4.1</span>
+        <div class="rmain"><b>AI Fundamentals in Financial Services</b><p>University of Oxford — Saïd Business School. AI capability grounded in the domain where I already operate.</p></div>
+        <span class="rval hot">Verified</span>
+      </div>
+      <div class="lrow" data-reveal>
+        <span class="rno">4.2</span>
+        <div class="rmain"><b>Claude 101 &amp; Claude Code 101</b><p>Anthropic. Certified on the tooling this entire site — and the trading pipeline — is built with.</p></div>
+        <span class="rval hot">Verified</span>
+      </div>
+      <div class="lrow" data-reveal>
+        <span class="rno">4.3</span>
+        <div class="rmain"><b>Full-Stack Development</b><p>Coursework completed as deliberate technical upskilling — the substrate under the AI layer.</p></div>
+        <span class="rval">Logged</span>
+      </div>
+      <div class="lrow" data-reveal>
+        <span class="rno">4.4</span>
+        <div class="rmain"><b>A Decade of Operations</b><p>10+ years across FP&amp;A, international logistics and business administration. Not a credential — a targeting system. It's how I know which problems are worth automating.</p></div>
+        <span class="rval">Field-Tested</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <p class="eyebrow">Closing Entry</p>
+    <h2 class="stencil">Get in<br>touch</h2>
+    <form id="contactform" novalidate>
+      <label>Your name
+        <input type="text" name="cname" autocomplete="name" maxlength="120" required>
+      </label>
+      <label>Your email
+        <input type="email" name="cemail" autocomplete="email" maxlength="200" required>
+      </label>
+      <label>Message
+        <textarea name="cmsg" maxlength="3000" required></textarea>
+      </label>
+      <button type="submit">Send message →</button>
+      <p class="formnote">Dispatches through your own email app — nothing is stored on this page.</p>
+    </form>
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">GitLab ↗</a>
+    </div>
+    <p class="note">Manifest closed · Balanced daily · Signed, R.P.V.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* reveals: entries, ledger rows, hero stamp, counters */
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var el = en.target;
+      if(el.id === 'herostamp'){
+        setTimeout(function(){ el.classList.add('stamped'); }, reduced?0:500);
+      } else if(el.hasAttribute('data-count')){
+        countUp(el);
+      } else {
+        el.classList.add('in');
+      }
+      io.unobserve(el);
+    });
+  },{threshold:.2});
+
+  document.querySelectorAll('[data-reveal],#herostamp,[data-count]').forEach(function(el){ io.observe(el); });
+
+  function countUp(el){
+    var target = parseInt(el.dataset.count,10);
+    if(reduced){ el.textContent = target; return; }
+    var t0 = null, dur = 1100;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min((ts-t0)/dur, 1);
+      p = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*p);
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* external link hygiene: new tab + no opener/referrer (covers daily-added repo cards too) */
+  document.querySelectorAll('a[href^="http"]').forEach(function(a){
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+  });
+
+  /* contact form: compose in the visitor's own mail app; address assembled at runtime (anti-scraper) */
+  var form = document.getElementById('contactform');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = (form.cname.value||'').trim().slice(0,120);
+      var email = (form.cemail.value||'').trim().slice(0,200);
+      var msg = (form.cmsg.value||'').trim().slice(0,3000);
+      if(!name || !email || !msg){
+        form.querySelector('.formnote').textContent = tmsg('f.need');
+        return;
+      }
+      var addr = ['rafael','pupio'].join('') + '@' + ['gmail','com'].join('.');
+      var subject = 'Portfolio contact — ' + name;
+      var body = 'From: ' + name + ' <' + email + '>\n\n' + msg;
+      window.location.href = 'mailto:' + addr +
+        '?subject=' + encodeURIComponent(subject) +
+        '&body=' + encodeURIComponent(body);
+      form.querySelector('.formnote').textContent = tmsg('f.sent');
+    });
+  }
+
+  /* smooth-scroll for topbar nav */
+  document.querySelectorAll('#topbar nav a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      var t = document.querySelector(id);
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior: reduced?'auto':'smooth'}); }
+    });
+  });
+
+  /* ================= I18N =================
+     Runtime translation of chrome + copy. Repo cards (#repo-data) and the
+     terminal stay in English by design. English originals are captured from
+     the DOM so switching back is lossless. Strings below are authored
+     constants — safe for innerHTML (no user or fetched input ever enters). */
+  var ITEMS = [
+    {s:'#topbar nav a[href="#builds"]', k:'nav.b'},
+    {s:'#topbar nav a[href="#repos"]', k:'nav.r'},
+    {s:'#topbar nav a[href="#method"]', k:'nav.m'},
+    {s:'#topbar nav a[href="#certs"]', k:'nav.c'},
+    {s:'#topbar nav a[href="#contact"]', k:'nav.k'},
+    {s:'.cleared > span:first-child', k:'auth'},
+    {s:'.hero p.subline[style]', k:'mercosur'},
+    {s:'.hero p.subline:not([style])', k:'tag', h:1},
+    {s:'.totals .tot:nth-child(1) .k', k:'t1'},
+    {s:'.totals .tot:nth-child(2) .k', k:'t2'},
+    {s:'.totals .tot:nth-child(3) .k', k:'t3'},
+    {s:'.totals .tot:nth-child(4) .k', k:'t4'},
+    {s:'#builds .sechead h2', k:'b.t'},
+    {s:'#builds > .wrap > .secnote', k:'b.n'},
+    {s:'#builds .entry:nth-of-type(1) h3', k:'e1.h'},
+    {s:'#builds .entry:nth-of-type(1) .e-sum', k:'e1.s'},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(1) .rk', k:'rk.ai'},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(1) span:not(.rk)', k:'e1.r1', h:1},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(2) .rk', k:'rk.edge'},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(2) span:not(.rk)', k:'e1.r2', h:1},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(3) .rk', k:'rk.st'},
+    {s:'#builds .entry:nth-of-type(1) .e-row:nth-child(3) span:not(.rk)', k:'e1.r3', h:1},
+    {s:'#builds .entry:nth-of-type(2) h3', k:'e2.h'},
+    {s:'#builds .entry:nth-of-type(2) .e-sum', k:'e2.s'},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(1) .rk', k:'rk.ai'},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(1) span:not(.rk)', k:'e2.r1', h:1},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(2) .rk', k:'rk.why'},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(2) span:not(.rk)', k:'e2.r2', h:1},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(3) .rk', k:'rk.st'},
+    {s:'#builds .entry:nth-of-type(2) .e-row:nth-child(3) span:not(.rk)', k:'e2.r3', h:1},
+    {s:'#builds .entry:nth-of-type(3) h3', k:'e3.h'},
+    {s:'#builds .entry:nth-of-type(3) .e-sum', k:'e3.s'},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(1) .rk', k:'rk.ai'},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(1) span:not(.rk)', k:'e3.r1', h:1},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(2) .rk', k:'rk.hood'},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(2) span:not(.rk)', k:'e3.r2', h:1},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(3) .rk', k:'rk.st'},
+    {s:'#builds .entry:nth-of-type(3) .e-row:nth-child(3) span:not(.rk)', k:'e3.r3', h:1},
+    {s:'#repos .sechead h2', k:'r.t'},
+    {s:'#repos .secnote', k:'r.n', h:1},
+    {s:'#method .sechead h2', k:'m.t'},
+    {s:'#method .secnote', k:'m.n'},
+    {s:'#method .e-row:nth-child(1) .rk', k:'m1k'},
+    {s:'#method .e-row:nth-child(1) span:not(.rk)', k:'m1v', h:1},
+    {s:'#method .e-row:nth-child(2) .rk', k:'m2k'},
+    {s:'#method .e-row:nth-child(2) span:not(.rk)', k:'m2v', h:1},
+    {s:'#method .e-row:nth-child(3) .rk', k:'m3k'},
+    {s:'#method .e-row:nth-child(3) span:not(.rk)', k:'m3v', h:1},
+    {s:'#method .e-row:nth-child(4) .rk', k:'m4k'},
+    {s:'#method .e-row:nth-child(4) span:not(.rk)', k:'m4v', h:1},
+    {s:'#method .e-row:nth-child(5) .rk', k:'m5k'},
+    {s:'#method .e-row:nth-child(5) span:not(.rk)', k:'m5v', h:1},
+    {s:'#method .e-row:nth-child(6) .rk', k:'m6k'},
+    {s:'#method .e-row:nth-child(6) span:not(.rk)', k:'m6v', h:1},
+    {s:'#method .e-row:nth-child(7) .rk', k:'m7k'},
+    {s:'#method .e-row:nth-child(7) span:not(.rk)', k:'m7v', h:1},
+    {s:'#certs .sechead h2', k:'c.t'},
+    {s:'#certs .secnote', k:'c.n', h:1},
+    {s:'#certs .lrow:nth-of-type(1) .rmain p', k:'c1p'},
+    {s:'#certs .lrow:nth-of-type(2) .rmain p', k:'c2p'},
+    {s:'#certs .lrow:nth-of-type(3) .rmain b', k:'c3h'},
+    {s:'#certs .lrow:nth-of-type(3) .rmain p', k:'c3p'},
+    {s:'#certs .lrow:nth-of-type(4) .rmain b', k:'c4h'},
+    {s:'#certs .lrow:nth-of-type(4) .rmain p', k:'c4p'},
+    {s:'footer .eyebrow', k:'f.eye'},
+    {s:'footer h2.stencil', k:'f.h', h:1},
+    {s:'#contactform label:nth-of-type(1)', k:'f.name', t:'label'},
+    {s:'#contactform label:nth-of-type(2)', k:'f.email', t:'label'},
+    {s:'#contactform label:nth-of-type(3)', k:'f.msg', t:'label'},
+    {s:'#contactform button', k:'f.btn'},
+    {s:'#contactform .formnote', k:'f.note'},
+    {s:'footer .note', k:'f.sig'}
+  ];
+  var LANGTAG = {en:'en', pt:'pt-BR', es:'es', fr:'fr', de:'de', it:'it', pl:'pl'};
+  var EN = {}; /* captured originals */
+  var curLang = 'en';
+  var T = {
+  pt: {
+    'nav.b':'Projetos','nav.r':'Repositórios','nav.m':'Método','nav.c':'Credenciais','nav.k':'Contato',
+    'auth':'Autorização de trabalho — sem necessidade de visto:',
+    'mercosur':'Cidadão americano · italiano · brasileiro — mais direito de residência simplificada no Mercosul, por toda a América do Sul',
+    'tag':'<b>Engenheiro de IA</b> construindo <span class="hot">agentes &amp; automação</span> sobre <b>10+ anos</b> em administração, operações e operações financeiras',
+    't1':'Anos de admin · operações · finanças','t2':'Certificações em IA','t3':'Cidadanias','t4':'Agente de trading — retreina diariamente',
+    'b.t':'Os Projetos','b.n':'Carga viva — o que estou construindo, como a IA é aplicada de verdade e sobre o que roda.',
+    'e1.h':'Agente de Trading com Aprendizado Diário',
+    'e1.s':'Um pipeline completo de P&D em day trading com IA. O núcleo é um agente de deep learning arquitetado para retreinar a cada pregão — os dados de mercado de cada dia alimentam o modelo do dia seguinte, então o sistema se compõe em vez de envelhecer. O Claude Code atua como parceiro de engenharia em arquitetura, código e pesquisa.',
+    'rk.ai':'IA aplicada','rk.edge':'Vantagem de domínio','rk.st':'Status','rk.why':'Por que importa','rk.hood':'Por baixo do capô',
+    'e1.r1':'Design de agente de deep learning · loop de retreino diário · engenharia agêntica com Claude Code conduzindo arquitetura e implementação',
+    'e1.r2':'Estrutura de mercado e risco moldados por 10+ anos de disciplina de FP&amp;A — os objetivos do modelo são definidos por quem já foi dono de um forecast de P&amp;L',
+    'e1.r3':'<b>P&amp;D ativo</b> — arquitetura documentada, agente em construção iterativa',
+    'e2.h':'Sistema de Contexto Persistente',
+    'e2.s':'A camada de conhecimento que torna o agente de trading construível: TRADING-KNOWLEDGE.md e DAILY-LEARNING-AGENT.md — documentação fundacional projetada como contexto durável de LLM. Colocados no repositório, eles instruem cada nova sessão do Claude sobre o domínio, a arquitetura e as decisões já tomadas. Sem reexplicar, sem deriva.',
+    'e2.r1':'Engenharia de contexto · documentação-como-memória · base de conhecimento nativa do repositório que transforma um modelo sem estado em um parceiro instruído',
+    'e2.r2':'Projetos agênticos vivem ou morrem pela qualidade do contexto — esta é a diferença entre um assistente e um colaborador',
+    'e2.r3':'<b>Entregue</b> — em uso diário alimentando o projeto 001',
+    'e3.h':'Este Site',
+    'e3.s':'Você está olhando para o projeto 003. HTML, CSS e JavaScript feitos à mão — zero frameworks, zero templates — entregues por um fluxo agêntico: três conceitos de design prototipados ao vivo, QA visual em navegador headless a cada iteração, e então esta mistura MANIFEST × LEDGER escolhida e lapidada.',
+    'e3.r1':'Loop agêntico de build — spec → protótipos de conceito → verificação automatizada por screenshot → entrega · Claude como parceiro de design e engenharia',
+    'e3.r2':'JS vanilla · reveals com IntersectionObserver · marquees só com CSS · suporte a reduced-motion · zero dependências',
+    'e3.r3':'<b>No ar</b> — e iterando',
+    'r.t':'Diário de Bordo','r.n':'Repositórios públicos, direto das docas em <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> e <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. As descrições dos repositórios permanecem em inglês.',
+    'm.t':'Método &amp; Stack','m.n':'As ferramentas, camada por camada — cada linha respaldada por um repositório público que você pode abrir.',
+    'm1k':'IA / ML','m1v':'Agente de deep learning com <b>loop de retreino diário</b> (pipeline de trading) · <b>RAG</b> sobre embeddings em <b>PostgreSQL + pgvector</b> com citação de fontes · ingestão de documentos multiestágio com <b>cadeias de agentes extrator → verificador</b> · agentes com uso de ferramentas no <b>Vercel AI SDK</b> (busca de conhecimento, agenda, escalonamento humano) <span style="opacity:.65">→ MORDOMO, agente de trading</span>',
+    'm2k':'Rigor de ML','m2v':'<b>Validação cruzada walk-forward com purga e embargo</b> para séries temporais com rótulos sobrepostos — controle de viés de look-ahead e vazamento de rótulos, ponderação por unicidade; API <b>compatível com scikit-learn</b>, apenas <b>NumPy</b> <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Linguagens','m3v':'<b>Python</b> para ML e ferramentas de sistema · <b>TypeScript</b> de ponta a ponta no código de produto',
+    'm4k':'Backend / Dados','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · rotas de servidor Next.js · configurações tipadas validadas com <b>Zod</b> <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO e acessibilidade WCAG · motion design sem dependências em JS/CSS puro <span style="opacity:.65">→ landing-page-cav, este site</span>',
+    'm6k':'Eng. Agêntica','m6v':'<b>Claude Code</b> como parceiro de engenharia — spec → arquivos <b>.md de contexto persistente</b> → build com plano prévio → <b>QA visual em navegador headless</b> a cada iteração <span style="opacity:.65">→ todos os repositórios acima</span>',
+    'm7k':'Ops / SRE','m7v':'<b>Monitoramento de serviços</b> multiplataforma com reinício auto-reparador e <b>dead-man\'s switch</b> — uma máquina morta ainda dispara alarme <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Credenciais','c.n':'Histórico completo no <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. Capacidade em IA enraizada no domínio em que já atuo.',
+    'c2p':'Anthropic. Certificado nas ferramentas com que este site — e o pipeline de trading — foram construídos.',
+    'c3h':'Desenvolvimento Full-Stack','c3p':'Formação concluída como upskilling técnico deliberado — o substrato sob a camada de IA.',
+    'c4h':'Uma Década de Operações','c4p':'10+ anos em administração, operações e operações financeiras. Não é uma credencial — é um sistema de mira. É como sei quais problemas valem a automação.',
+    'f.eye':'Lançamento de Encerramento','f.h':'Fale<br>comigo','f.name':'Seu nome','f.email':'Seu e-mail','f.msg':'Mensagem','f.btn':'Enviar mensagem →',
+    'f.note':'Enviado pelo seu próprio app de e-mail — nada é armazenado nesta página.',
+    'f.need':'Os três campos são necessários antes do envio.','f.sent':'Abrindo seu app de e-mail — clique em enviar lá e a mensagem chega à minha caixa.',
+    'f.sig':'Manifesto encerrado · Balanceado diariamente · Assinado, R.P.V.'
+  },
+  es: {
+    'nav.b':'Proyectos','nav.r':'Repositorios','nav.m':'Método','nav.c':'Credenciales','nav.k':'Contacto',
+    'auth':'Autorización de trabajo — sin necesidad de visado:',
+    'mercosur':'Ciudadano estadounidense · italiano · brasileño — más residencia simplificada del Mercosur en toda Sudamérica',
+    'tag':'<b>Ingeniero de IA</b> construyendo <span class="hot">agentes y automatización</span> sobre <b>10+ años</b> en administración, operaciones y operaciones financieras',
+    't1':'Años de admin · operaciones · finanzas','t2':'Certificaciones en IA','t3':'Ciudadanías','t4':'Agente de trading — se reentrena a diario',
+    'b.t':'Los Proyectos','b.n':'Carga viva — qué estoy construyendo, cómo se aplica la IA de verdad y sobre qué corre.',
+    'e1.h':'Agente de Trading con Aprendizaje Diario',
+    'e1.s':'Un pipeline completo de I+D de day trading con IA. El núcleo es un agente de deep learning diseñado para reentrenarse en cada sesión — los datos de mercado de cada día alimentan el modelo del día siguiente, así el sistema se compone en lugar de quedarse obsoleto. Claude Code actúa como socio de ingeniería en arquitectura, código e investigación.',
+    'rk.ai':'IA aplicada','rk.edge':'Ventaja de dominio','rk.st':'Estado','rk.why':'Por qué importa','rk.hood':'Bajo el capó',
+    'e1.r1':'Diseño de agente de deep learning · bucle de reentrenamiento diario · ingeniería agéntica con Claude Code dirigiendo arquitectura e implementación',
+    'e1.r2':'Estructura de mercado y riesgo enmarcados por 10+ años de disciplina FP&amp;A — los objetivos del modelo los fija alguien que ha sido dueño de un forecast de P&amp;L',
+    'e1.r3':'<b>I+D activo</b> — arquitectura documentada, agente en construcción iterativa',
+    'e2.h':'Sistema de Contexto Persistente',
+    'e2.s':'La capa de conocimiento que hace construible el agente de trading: TRADING-KNOWLEDGE.md y DAILY-LEARNING-AGENT.md — documentación fundacional diseñada como contexto duradero para LLM. Colocados en el repositorio, informan a cada nueva sesión de Claude sobre el dominio, la arquitectura y las decisiones ya tomadas. Sin repetir explicaciones, sin deriva.',
+    'e2.r1':'Ingeniería de contexto · documentación-como-memoria · base de conocimiento nativa del repositorio que convierte un modelo sin estado en un colaborador informado',
+    'e2.r2':'Los proyectos agénticos viven o mueren por la calidad del contexto — esta es la diferencia entre un asistente y un colaborador',
+    'e2.r3':'<b>Entregado</b> — en uso diario impulsando el proyecto 001',
+    'e3.h':'Este Sitio',
+    'e3.s':'Estás mirando el proyecto 003. HTML, CSS y JavaScript hechos a mano — cero frameworks, cero plantillas — entregados mediante un flujo agéntico: tres conceptos de diseño prototipados en vivo, QA visual con navegador headless en cada iteración, y esta mezcla MANIFEST × LEDGER elegida y pulida.',
+    'e3.r1':'Bucle agéntico de build — spec → prototipos de concepto → verificación automatizada por captura → entrega · Claude como socio de diseño e ingeniería',
+    'e3.r2':'JS vanilla · reveals con IntersectionObserver · marquesinas solo CSS · soporte de reduced-motion · sin dependencias',
+    'e3.r3':'<b>En vivo</b> — e iterando',
+    'r.t':'Cuaderno de Bitácora','r.n':'Repositorios públicos, directos del muelle en <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> y <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. Las descripciones de los repositorios permanecen en inglés.',
+    'm.t':'Método y Stack','m.n':'Las herramientas, capa por capa — cada línea respaldada por un repositorio público que puedes abrir.',
+    'm1k':'IA / ML','m1v':'Agente de deep learning con <b>bucle de reentrenamiento diario</b> (pipeline de trading) · <b>RAG</b> sobre embeddings en <b>PostgreSQL + pgvector</b> con citas de fuentes · ingesta de documentos multietapa con <b>cadenas de agentes extractor → verificador</b> · agentes con uso de herramientas sobre el <b>Vercel AI SDK</b> (búsqueda de conocimiento, calendario, escalado a humanos) <span style="opacity:.65">→ MORDOMO, agente de trading</span>',
+    'm2k':'Rigor de ML','m2v':'<b>Validación cruzada walk-forward con purga y embargo</b> para series temporales con etiquetas superpuestas — control de sesgo de look-ahead y fuga de etiquetas, ponderación por unicidad; API <b>compatible con scikit-learn</b>, solo <b>NumPy</b> <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Lenguajes','m3v':'<b>Python</b> para ML y herramientas de sistema · <b>TypeScript</b> de extremo a extremo en el código de producto',
+    'm4k':'Backend / Datos','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · rutas de servidor Next.js · configuraciones tipadas validadas con <b>Zod</b> <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO y accesibilidad WCAG · motion design sin dependencias en JS/CSS puro <span style="opacity:.65">→ landing-page-cav, este sitio</span>',
+    'm6k':'Ing. Agéntica','m6v':'<b>Claude Code</b> como socio de ingeniería — spec → archivos <b>.md de contexto persistente</b> → build con plan previo → <b>QA visual con navegador headless</b> en cada iteración <span style="opacity:.65">→ todos los repositorios anteriores</span>',
+    'm7k':'Ops / SRE','m7v':'<b>Monitorización de servicios</b> multiplataforma con reinicios auto-reparadores y <b>dead-man\'s switch</b> — una máquina muerta aún levanta la alarma <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Credenciales','c.n':'Historial completo en <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. Capacidad en IA anclada en el dominio donde ya opero.',
+    'c2p':'Anthropic. Certificado en las herramientas con las que se construyó este sitio — y el pipeline de trading.',
+    'c3h':'Desarrollo Full-Stack','c3p':'Formación completada como upskilling técnico deliberado — el sustrato bajo la capa de IA.',
+    'c4h':'Una Década de Operaciones','c4p':'10+ años en administración, operaciones y operaciones financieras. No es una credencial — es un sistema de puntería. Así sé qué problemas merecen automatizarse.',
+    'f.eye':'Asiento de Cierre','f.h':'Hablemos','f.name':'Tu nombre','f.email':'Tu correo','f.msg':'Mensaje','f.btn':'Enviar mensaje →',
+    'f.note':'Se envía desde tu propia app de correo — nada se almacena en esta página.',
+    'f.need':'Los tres campos son necesarios antes del envío.','f.sent':'Abriendo tu app de correo — pulsa enviar allí y el mensaje llega a mi bandeja.',
+    'f.sig':'Manifiesto cerrado · Cuadrado a diario · Firmado, R.P.V.'
+  },
+  fr: {
+    'nav.b':'Projets','nav.r':'Dépôts','nav.m':'Méthode','nav.c':'Références','nav.k':'Contact',
+    'auth':'Autorisation de travail — aucun visa requis :',
+    'mercosur':'Citoyen américain · italien · brésilien — plus la résidence simplifiée du Mercosur dans toute l\'Amérique du Sud',
+    'tag':'<b>Ingénieur IA</b> construisant <span class="hot">agents &amp; automatisation</span> sur <b>10+ ans</b> d\'administration, d\'opérations et d\'opérations financières',
+    't1':'Ans d\'admin · opérations · finance','t2':'Certifications IA','t3':'Nationalités','t4':'Agent de trading — réentraîné chaque jour',
+    'b.t':'Les Projets','b.n':'Cargaison vivante — ce que je construis, comment l\'IA est réellement appliquée, et sur quoi ça tourne.',
+    'e1.h':'Agent de Trading à Apprentissage Quotidien',
+    'e1.s':'Un pipeline complet de R&amp;D de day trading par IA. Le cœur est un agent de deep learning conçu pour se réentraîner à chaque séance — les données de marché de chaque jour nourrissent le modèle du lendemain, le système se compose au lieu de vieillir. Claude Code opère comme partenaire d\'ingénierie sur l\'architecture, le code et la recherche.',
+    'rk.ai':'IA appliquée','rk.edge':'Avantage métier','rk.st':'Statut','rk.why':'Pourquoi ça compte','rk.hood':'Sous le capot',
+    'e1.r1':'Conception d\'agent de deep learning · boucle de réentraînement quotidien · ingénierie agentique avec Claude Code pilotant architecture et implémentation',
+    'e1.r2':'Structure de marché et risque cadrés par 10+ ans de discipline FP&amp;A — les objectifs du modèle sont fixés par quelqu\'un qui a porté un forecast de P&amp;L',
+    'e1.r3':'<b>R&amp;D active</b> — architecture documentée, agent en construction itérative',
+    'e2.h':'Système de Contexte Persistant',
+    'e2.s':'La couche de connaissance qui rend l\'agent de trading constructible : TRADING-KNOWLEDGE.md et DAILY-LEARNING-AGENT.md — documentation fondatrice conçue comme contexte durable pour LLM. Déposés dans le dépôt, ils briefent chaque nouvelle session de Claude sur le domaine, l\'architecture et les décisions déjà prises. Pas de redite, pas de dérive.',
+    'e2.r1':'Ingénierie de contexte · documentation-mémoire · base de connaissance native du dépôt qui change un modèle sans état en équipier briefé',
+    'e2.r2':'Les projets agentiques vivent ou meurent par la qualité du contexte — c\'est la différence entre un assistant et un collaborateur',
+    'e2.r3':'<b>Livré</b> — utilisé chaque jour pour le projet 001',
+    'e3.h':'Ce Site',
+    'e3.s':'Vous regardez le projet 003. HTML, CSS et JavaScript faits main — zéro framework, zéro template — livrés par un flux agentique : trois concepts de design prototypés en direct, QA visuelle en navigateur headless à chaque itération, puis ce mélange MANIFEST × LEDGER choisi et taillé.',
+    'e3.r1':'Boucle de build agentique — spec → prototypes de concept → vérification automatisée par capture → livraison · Claude comme partenaire de design et d\'ingénierie',
+    'e3.r2':'JS vanilla · révélations IntersectionObserver · défilements CSS pur · support reduced-motion · zéro dépendance',
+    'e3.r3':'<b>En ligne</b> — et en itération',
+    'r.t':'Journal de Bord','r.n':'Dépôts publics, tirés du quai sur <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> et <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. Les descriptions des dépôts restent en anglais.',
+    'm.t':'Méthode &amp; Stack','m.n':'Les outils, couche par couche — chaque ligne adossée à un dépôt public que vous pouvez ouvrir.',
+    'm1k':'IA / ML','m1v':'Agent de deep learning avec <b>boucle de réentraînement quotidien</b> (pipeline de trading) · <b>RAG</b> sur embeddings <b>PostgreSQL + pgvector</b> avec citations des sources · ingestion documentaire multi-étapes avec <b>chaînes d\'agents extracteur → vérificateur</b> · agents à outils sur le <b>Vercel AI SDK</b> (recherche de connaissance, agenda, escalade humaine) <span style="opacity:.65">→ MORDOMO, agent de trading</span>',
+    'm2k':'Rigueur ML','m2v':'<b>Validation croisée walk-forward avec purge et embargo</b> pour séries temporelles à étiquettes chevauchantes — contrôle du biais de look-ahead et des fuites d\'étiquettes, pondération par unicité ; API <b>compatible scikit-learn</b>, <b>NumPy</b> seul <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Langages','m3v':'<b>Python</b> pour le ML et l\'outillage système · <b>TypeScript</b> de bout en bout pour le code produit',
+    'm4k':'Backend / Données','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · routes serveur Next.js · configurations typées validées par <b>Zod</b> <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO et accessibilité WCAG · motion design sans dépendance en JS/CSS natifs <span style="opacity:.65">→ landing-page-cav, ce site</span>',
+    'm6k':'Ing. Agentique','m6v':'<b>Claude Code</b> comme partenaire d\'ingénierie — spec → fichiers <b>.md de contexte persistant</b> → build planifié → <b>QA visuelle en navigateur headless</b> à chaque itération <span style="opacity:.65">→ tous les dépôts ci-dessus</span>',
+    'm7k':'Ops / SRE','m7v':'<b>Supervision de services</b> multiplateforme avec redémarrages auto-réparateurs et <b>dead-man\'s switch</b> — une machine morte déclenche encore l\'alarme <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Références','c.n':'Parcours complet sur <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. Une capacité IA ancrée dans le domaine où j\'opère déjà.',
+    'c2p':'Anthropic. Certifié sur l\'outillage avec lequel ce site — et le pipeline de trading — sont construits.',
+    'c3h':'Développement Full-Stack','c3p':'Formation achevée en montée en compétence technique délibérée — le substrat sous la couche IA.',
+    'c4h':'Une Décennie d\'Opérations','c4p':'10+ ans d\'administration, d\'opérations et d\'opérations financières. Pas une référence — un système de visée. C\'est ainsi que je sais quels problèmes méritent l\'automatisation.',
+    'f.eye':'Écriture de Clôture','f.h':'Me<br>contacter','f.name':'Votre nom','f.email':'Votre e-mail','f.msg':'Message','f.btn':'Envoyer le message →',
+    'f.note':'Expédié via votre propre app e-mail — rien n\'est stocké sur cette page.',
+    'f.need':'Les trois champs sont requis avant l\'envoi.','f.sent':'Ouverture de votre app e-mail — cliquez envoyer là-bas et le message arrive dans ma boîte.',
+    'f.sig':'Manifeste clos · Équilibré chaque jour · Signé, R.P.V.'
+  },
+  de: {
+    'nav.b':'Projekte','nav.r':'Repos','nav.m':'Methode','nav.c':'Nachweise','nav.k':'Kontakt',
+    'auth':'Arbeitserlaubnis — kein Visum nötig:',
+    'mercosur':'US-amerikanischer · italienischer · brasilianischer Staatsbürger — plus vereinfachtes Mercosur-Aufenthaltsrecht in ganz Südamerika',
+    'tag':'<b>AI Engineer</b> — baut <span class="hot">Agenten &amp; Automatisierung</span> auf <b>10+ Jahren</b> in Verwaltung, Operations und Finanzoperationen',
+    't1':'Jahre Verwaltung · Ops · Finanzen','t2':'KI-Zertifizierungen','t3':'Staatsbürgerschaften','t4':'Trading-Agent — trainiert täglich neu',
+    'b.t':'Die Projekte','b.n':'Lebende Fracht — was ich baue, wie die KI wirklich eingesetzt wird und worauf es läuft.',
+    'e1.h':'Trading-Agent mit täglichem Lernen',
+    'e1.s':'Eine End-to-End-KI-Pipeline für Day-Trading-F&amp;E. Der Kern ist ein Deep-Learning-Agent, der sich nach jeder Handelssitzung neu trainiert — die Marktdaten jedes Tages speisen das Modell des nächsten, das System verstärkt sich statt zu veralten. Claude Code arbeitet als Engineering-Partner über Architektur, Code und Research hinweg.',
+    'rk.ai':'KI im Einsatz','rk.edge':'Domänenvorteil','rk.st':'Status','rk.why':'Warum es zählt','rk.hood':'Unter der Haube',
+    'e1.r1':'Deep-Learning-Agentendesign · tägliche Retraining-Schleife · agentisches Engineering mit Claude Code für Architektur und Implementierung',
+    'e1.r2':'Marktstruktur und Risiko geprägt von 10+ Jahren FP&amp;A-Disziplin — die Ziele des Modells setzt jemand, der einen P&amp;L-Forecast verantwortet hat',
+    'e1.r3':'<b>Aktive F&amp;E</b> — Architektur dokumentiert, Agent in iterativem Aufbau',
+    'e2.h':'Persistentes Kontext-System',
+    'e2.s':'Die Wissensschicht, die den Trading-Agenten baubar macht: TRADING-KNOWLEDGE.md und DAILY-LEARNING-AGENT.md — Grundlagendokumentation als dauerhafter LLM-Kontext. Im Repo abgelegt, briefen sie jede neue Claude-Session über Domäne, Architektur und bereits getroffene Entscheidungen. Kein Neu-Erklären, kein Drift.',
+    'e2.r1':'Context Engineering · Dokumentation-als-Gedächtnis · repo-native Wissensbasis, die ein zustandsloses Modell in einen gebrieften Mitarbeiter verwandelt',
+    'e2.r2':'Agentische Projekte stehen und fallen mit der Kontextqualität — das ist der Unterschied zwischen Assistent und Kollaborateur',
+    'e2.r3':'<b>Ausgeliefert</b> — täglich im Einsatz für Projekt 001',
+    'e3.h':'Diese Seite',
+    'e3.s':'Sie sehen Projekt 003. Handgeschriebenes HTML, CSS und JavaScript — null Frameworks, null Templates — ausgeliefert über einen agentischen Workflow: drei Designkonzepte live prototypisiert, visuelles QA im Headless-Browser bei jeder Iteration, dann diese MANIFEST-×-LEDGER-Mischung gewählt und geschliffen.',
+    'e3.r1':'Agentische Build-Schleife — Spec → Konzeptprototypen → automatisierte Screenshot-Verifikation → Auslieferung · Claude als Design- und Engineering-Partner',
+    'e3.r2':'Vanilla JS · IntersectionObserver-Reveals · reine CSS-Marquees · Reduced-Motion-Support · keine Abhängigkeiten',
+    'e3.r3':'<b>Live</b> — und in Iteration',
+    'r.t':'Logbuch','r.n':'Öffentliche Repositories, direkt vom Dock auf <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> und <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. Repo-Beschreibungen bleiben auf Englisch.',
+    'm.t':'Methode &amp; Stack','m.n':'Die Werkzeuge, Schicht für Schicht — jede Zeile belegt durch ein öffentliches Repo, das Sie öffnen können.',
+    'm1k':'KI / ML','m1v':'Deep-Learning-Agent mit <b>täglicher Retraining-Schleife</b> (Trading-Pipeline) · <b>RAG</b> über <b>PostgreSQL + pgvector</b>-Embeddings mit Quellenzitaten · mehrstufige Dokumenten-Ingestion mit <b>Extraktor-→-Verifizierer-Agentenketten</b> · Tool-nutzende Agenten auf dem <b>Vercel AI SDK</b> (Wissenssuche, Kalender, menschliche Eskalation) <span style="opacity:.65">→ MORDOMO, Trading-Agent</span>',
+    'm2k':'ML-Rigorosität','m2v':'<b>Purged &amp; embargoed Walk-Forward-Kreuzvalidierung</b> für Zeitreihen mit überlappenden Labels — Kontrolle von Look-Ahead-Bias und Label-Leakage, Uniqueness-Gewichtung; <b>scikit-learn-kompatible</b> API, nur <b>NumPy</b> <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Sprachen','m3v':'<b>Python</b> für ML und System-Tooling · <b>TypeScript</b> durchgängig im Produktcode',
+    'm4k':'Backend / Daten','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · Next.js-Server-Routen · <b>Zod</b>-validierte typisierte Konfigurationen <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO &amp; WCAG-Barrierefreiheit · abhängigkeitsfreies Motion Design in Vanilla JS/CSS <span style="opacity:.65">→ landing-page-cav, diese Seite</span>',
+    'm6k':'Agentisches Eng.','m6v':'<b>Claude Code</b> als Engineering-Partner — Spec → persistente <b>.md-Kontextdateien</b> → Plan-first-Build → <b>visuelles QA im Headless-Browser</b> bei jeder Iteration <span style="opacity:.65">→ alle Repos oben</span>',
+    'm7k':'Ops / SRE','m7v':'Plattformübergreifendes <b>Service-Monitoring</b> mit selbstheilenden Neustarts und <b>Dead-Man\'s-Switch</b> — eine tote Maschine schlägt trotzdem Alarm <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Nachweise','c.n':'Vollständiger Werdegang auf <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. KI-Kompetenz verankert in der Domäne, in der ich bereits arbeite.',
+    'c2p':'Anthropic. Zertifiziert auf dem Tooling, mit dem diese Seite — und die Trading-Pipeline — gebaut sind.',
+    'c3h':'Full-Stack-Entwicklung','c3p':'Ausbildung abgeschlossen als gezieltes technisches Upskilling — das Substrat unter der KI-Schicht.',
+    'c4h':'Ein Jahrzehnt Operations','c4p':'10+ Jahre in Verwaltung, Operations und Finanzoperationen. Kein Nachweis — ein Zielsystem. So weiß ich, welche Probleme die Automatisierung wert sind.',
+    'f.eye':'Abschlussbuchung','f.h':'Kontakt<br>aufnehmen','f.name':'Ihr Name','f.email':'Ihre E-Mail','f.msg':'Nachricht','f.btn':'Nachricht senden →',
+    'f.note':'Versand über Ihre eigene E-Mail-App — nichts wird auf dieser Seite gespeichert.',
+    'f.need':'Alle drei Felder werden vor dem Versand benötigt.','f.sent':'Ihre E-Mail-App öffnet sich — dort auf Senden klicken, und die Nachricht landet in meinem Postfach.',
+    'f.sig':'Manifest geschlossen · Täglich bilanziert · Gezeichnet, R.P.V.'
+  },
+  it: {
+    'nav.b':'Progetti','nav.r':'Repository','nav.m':'Metodo','nav.c':'Credenziali','nav.k':'Contatto',
+    'auth':'Autorizzazione al lavoro — nessun visto richiesto:',
+    'mercosur':'Cittadino statunitense · italiano · brasiliano — più residenza semplificata Mercosur in tutto il Sud America',
+    'tag':'<b>AI Engineer</b> che costruisce <span class="hot">agenti e automazione</span> su <b>10+ anni</b> di amministrazione, operations e operazioni finanziarie',
+    't1':'Anni di amministrazione · ops · finanza','t2':'Certificazioni IA','t3':'Cittadinanze','t4':'Agente di trading — si riaddestra ogni giorno',
+    'b.t':'I Progetti','b.n':'Carico vivo — cosa sto costruendo, come l\'IA è davvero applicata e su cosa gira.',
+    'e1.h':'Agente di Trading ad Apprendimento Quotidiano',
+    'e1.s':'Una pipeline completa di R&amp;S per day trading con IA. Il cuore è un agente di deep learning progettato per riaddestrarsi a ogni seduta — i dati di mercato di ogni giorno alimentano il modello del giorno dopo, così il sistema si compone invece di invecchiare. Claude Code opera come partner di ingegneria su architettura, codice e ricerca.',
+    'rk.ai':'IA applicata','rk.edge':'Vantaggio di dominio','rk.st':'Stato','rk.why':'Perché conta','rk.hood':'Sotto il cofano',
+    'e1.r1':'Design di agenti deep learning · ciclo di riaddestramento quotidiano · ingegneria agentica con Claude Code alla guida di architettura e implementazione',
+    'e1.r2':'Struttura di mercato e rischio inquadrati da 10+ anni di disciplina FP&amp;A — gli obiettivi del modello li fissa chi ha gestito un forecast di P&amp;L',
+    'e1.r3':'<b>R&amp;S attiva</b> — architettura documentata, agente in costruzione iterativa',
+    'e2.h':'Sistema di Contesto Persistente',
+    'e2.s':'Lo strato di conoscenza che rende costruibile l\'agente di trading: TRADING-KNOWLEDGE.md e DAILY-LEARNING-AGENT.md — documentazione fondativa progettata come contesto durevole per LLM. Inseriti nel repository, istruiscono ogni nuova sessione di Claude su dominio, architettura e decisioni già prese. Niente ripetizioni, niente deriva.',
+    'e2.r1':'Context engineering · documentazione-come-memoria · base di conoscenza nativa del repository che trasforma un modello senza stato in un collaboratore istruito',
+    'e2.r2':'I progetti agentici vivono o muoiono per la qualità del contesto — è la differenza tra un assistente e un collaboratore',
+    'e2.r3':'<b>Consegnato</b> — in uso quotidiano ad alimentare il progetto 001',
+    'e3.h':'Questo Sito',
+    'e3.s':'State guardando il progetto 003. HTML, CSS e JavaScript fatti a mano — zero framework, zero template — consegnati con un flusso agentico: tre concept di design prototipati dal vivo, QA visivo in browser headless a ogni iterazione, poi questa miscela MANIFEST × LEDGER scelta e rifinita.',
+    'e3.r1':'Ciclo di build agentico — spec → prototipi di concept → verifica automatizzata via screenshot → consegna · Claude come partner di design e ingegneria',
+    'e3.r2':'JS vanilla · reveal con IntersectionObserver · marquee solo CSS · supporto reduced-motion · zero dipendenze',
+    'e3.r3':'<b>Online</b> — e in iterazione',
+    'r.t':'Giornale di Bordo','r.n':'Repository pubblici, direttamente dalla banchina su <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> e <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. Le descrizioni dei repository restano in inglese.',
+    'm.t':'Metodo &amp; Stack','m.n':'Gli strumenti, strato per strato — ogni riga sostenuta da un repository pubblico che potete aprire.',
+    'm1k':'IA / ML','m1v':'Agente di deep learning con <b>ciclo di riaddestramento quotidiano</b> (pipeline di trading) · <b>RAG</b> su embeddings <b>PostgreSQL + pgvector</b> con citazione delle fonti · ingestione documentale multi-stadio con <b>catene di agenti estrattore → verificatore</b> · agenti con uso di strumenti sul <b>Vercel AI SDK</b> (ricerca di conoscenza, calendario, escalation umana) <span style="opacity:.65">→ MORDOMO, agente di trading</span>',
+    'm2k':'Rigore ML','m2v':'<b>Cross-validation walk-forward con purga ed embargo</b> per serie temporali con etichette sovrapposte — controllo del look-ahead bias e del label leakage, pesatura per unicità; API <b>compatibile scikit-learn</b>, solo <b>NumPy</b> <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Linguaggi','m3v':'<b>Python</b> per ML e tooling di sistema · <b>TypeScript</b> end-to-end nel codice di prodotto',
+    'm4k':'Backend / Dati','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · route server Next.js · configurazioni tipizzate validate con <b>Zod</b> <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO e accessibilità WCAG · motion design senza dipendenze in JS/CSS puri <span style="opacity:.65">→ landing-page-cav, questo sito</span>',
+    'm6k':'Ing. Agentica','m6v':'<b>Claude Code</b> come partner di ingegneria — spec → file <b>.md di contesto persistente</b> → build plan-first → <b>QA visivo in browser headless</b> a ogni iterazione <span style="opacity:.65">→ tutti i repository sopra</span>',
+    'm7k':'Ops / SRE','m7v':'<b>Monitoraggio servizi</b> multipiattaforma con riavvii auto-riparanti e <b>dead-man\'s switch</b> — una macchina morta fa comunque scattare l\'allarme <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Credenziali','c.n':'Percorso completo su <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. Competenza IA radicata nel dominio in cui già opero.',
+    'c2p':'Anthropic. Certificato sugli strumenti con cui questo sito — e la pipeline di trading — sono costruiti.',
+    'c3h':'Sviluppo Full-Stack','c3p':'Percorso completato come upskilling tecnico deliberato — il substrato sotto lo strato IA.',
+    'c4h':'Un Decennio di Operations','c4p':'10+ anni in amministrazione, operations e operazioni finanziarie. Non una credenziale — un sistema di puntamento. È così che so quali problemi meritano l\'automazione.',
+    'f.eye':'Scrittura di Chiusura','f.h':'Mettiti in<br>contatto','f.name':'Il tuo nome','f.email':'La tua email','f.msg':'Messaggio','f.btn':'Invia messaggio →',
+    'f.note':'Spedito tramite la tua app email — nulla viene salvato su questa pagina.',
+    'f.need':'Servono tutti e tre i campi prima dell\'invio.','f.sent':'Apro la tua app email — premi invia lì e il messaggio arriva nella mia casella.',
+    'f.sig':'Manifesto chiuso · Bilanciato ogni giorno · Firmato, R.P.V.'
+  },
+  pl: {
+    'nav.b':'Projekty','nav.r':'Repozytoria','nav.m':'Metoda','nav.c':'Kwalifikacje','nav.k':'Kontakt',
+    'auth':'Pozwolenie na pracę — bez wizy:',
+    'mercosur':'Obywatel USA · Włoch · Brazylii — plus uproszczona rezydencja Mercosur w całej Ameryce Południowej',
+    'tag':'<b>Inżynier AI</b> budujący <span class="hot">agentów i automatyzację</span> na <b>10+ latach</b> administracji, operacji i operacji finansowych',
+    't1':'Lat administracji · operacji · finansów','t2':'Certyfikaty AI','t3':'Obywatelstwa','t4':'Agent tradingowy — trenuje codziennie',
+    'b.t':'Projekty','b.n':'Żywy ładunek — co buduję, jak naprawdę stosowana jest AI i na czym to działa.',
+    'e1.h':'Agent Tradingowy Uczący się Codziennie',
+    'e1.s':'Kompletny pipeline B+R do day tradingu oparty na AI. Rdzeniem jest agent deep learningu zaprojektowany tak, by trenował się na nowo po każdej sesji — dane rynkowe każdego dnia zasilają model następnego, więc system się kumuluje, zamiast się starzeć. Claude Code działa jako partner inżynieryjny w architekturze, kodzie i badaniach.',
+    'rk.ai':'Zastosowana AI','rk.edge':'Przewaga domenowa','rk.st':'Status','rk.why':'Dlaczego to ważne','rk.hood':'Pod maską',
+    'e1.r1':'Projekt agenta deep learningu · codzienna pętla retreningu · inżynieria agentowa z Claude Code prowadzącym architekturę i implementację',
+    'e1.r2':'Struktura rynku i ryzyko ujęte przez 10+ lat dyscypliny FP&amp;A — cele modelu wyznacza ktoś, kto odpowiadał za prognozę P&amp;L',
+    'e1.r3':'<b>Aktywne B+R</b> — architektura udokumentowana, agent w iteracyjnej budowie',
+    'e2.h':'System Trwałego Kontekstu',
+    'e2.s':'Warstwa wiedzy, dzięki której agent tradingowy da się zbudować: TRADING-KNOWLEDGE.md i DAILY-LEARNING-AGENT.md — dokumentacja fundamentowa zaprojektowana jako trwały kontekst LLM. Umieszczone w repozytorium, wprowadzają każdą nową sesję Claude w domenę, architekturę i podjęte już decyzje. Bez tłumaczenia od nowa, bez dryfu.',
+    'e2.r1':'Inżynieria kontekstu · dokumentacja-jako-pamięć · natywna dla repozytorium baza wiedzy, która zamienia bezstanowy model w poinformowanego współpracownika',
+    'e2.r2':'Projekty agentowe żyją lub umierają od jakości kontekstu — to różnica między asystentem a współpracownikiem',
+    'e2.r3':'<b>Dostarczone</b> — w codziennym użyciu, zasila projekt 001',
+    'e3.h':'Ta Strona',
+    'e3.s':'Patrzysz na projekt 003. Ręcznie pisany HTML, CSS i JavaScript — zero frameworków, zero szablonów — dostarczony w agentowym przepływie: trzy koncepty designu prototypowane na żywo, wizualne QA w przeglądarce headless przy każdej iteracji, a potem wybrana i doszlifowana ta mieszanka MANIFEST × LEDGER.',
+    'e3.r1':'Agentowa pętla budowy — spec → prototypy konceptów → automatyczna weryfikacja zrzutami ekranu → dostawa · Claude jako partner projektowy i inżynieryjny',
+    'e3.r2':'Czysty JS · odsłonięcia IntersectionObserver · marquee w samym CSS · wsparcie reduced-motion · zero zależności',
+    'e3.r3':'<b>Online</b> — i w iteracji',
+    'r.t':'Dziennik Pokładowy','r.n':'Publiczne repozytoria, prosto z nabrzeża: <a href="https://github.com/RafaelPupio" target="_blank" rel="noopener noreferrer">github.com/RafaelPupio</a> i <a href="https://gitlab.com/RafaelPupio" target="_blank" rel="noopener noreferrer">gitlab.com/RafaelPupio</a>. Opisy repozytoriów pozostają po angielsku.',
+    'm.t':'Metoda i Stack','m.n':'Narzędzia, warstwa po warstwie — każda linia poparta publicznym repozytorium, które można otworzyć.',
+    'm1k':'AI / ML','m1v':'Agent deep learningu z <b>codzienną pętlą retreningu</b> (pipeline tradingowy) · <b>RAG</b> na embeddingach <b>PostgreSQL + pgvector</b> z cytowaniem źródeł · wieloetapowa ingestia dokumentów z <b>łańcuchami agentów ekstraktor → weryfikator</b> · agenci używający narzędzi na <b>Vercel AI SDK</b> (wyszukiwanie wiedzy, kalendarz, eskalacja do człowieka) <span style="opacity:.65">→ MORDOMO, agent tradingowy</span>',
+    'm2k':'Rygor ML','m2v':'<b>Walidacja krzyżowa walk-forward z purgą i embargiem</b> dla szeregów czasowych z nakładającymi się etykietami — kontrola look-ahead bias i wycieku etykiet, ważenie unikalnością; API <b>zgodne ze scikit-learn</b>, sam <b>NumPy</b> <span style="opacity:.65">→ purged-walkforward</span>',
+    'm3k':'Języki','m3v':'<b>Python</b> do ML i narzędzi systemowych · <b>TypeScript</b> od końca do końca w kodzie produktowym',
+    'm4k':'Backend / Dane','m4v':'<b>PostgreSQL</b> (+ pgvector) · <b>Drizzle ORM</b> · trasy serwerowe Next.js · typowane konfiguracje walidowane <b>Zod</b> <span style="opacity:.65">→ MORDOMO, ChurchChatBox, landing-page-cav</span>',
+    'm5k':'Frontend','m5v':'<b>Next.js 16</b> · <b>React 19</b> · SEO i dostępność WCAG · motion design bez zależności w czystym JS/CSS <span style="opacity:.65">→ landing-page-cav, ta strona</span>',
+    'm6k':'Inż. Agentowa','m6v':'<b>Claude Code</b> jako partner inżynieryjny — spec → trwałe pliki kontekstu <b>.md</b> → budowa plan-first → <b>wizualne QA w przeglądarce headless</b> przy każdej iteracji <span style="opacity:.65">→ wszystkie repozytoria powyżej</span>',
+    'm7k':'Ops / SRE','m7v':'Wieloplatformowy <b>monitoring usług</b> z samonaprawczymi restartami i <b>dead-man\'s switch</b> — martwa maszyna i tak podnosi alarm <span style="opacity:.65">→ service-watchdog</span>',
+    'c.t':'Kwalifikacje','c.n':'Pełna historia na <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.',
+    'c1p':'University of Oxford — Saïd Business School. Kompetencje AI zakorzenione w domenie, w której już działam.',
+    'c2p':'Anthropic. Certyfikowany z narzędzi, którymi zbudowano tę stronę — i pipeline tradingowy.',
+    'c3h':'Programowanie Full-Stack','c3p':'Kurs ukończony jako celowe podnoszenie kompetencji technicznych — podłoże pod warstwę AI.',
+    'c4h':'Dekada Operacji','c4p':'10+ lat w administracji, operacjach i operacjach finansowych. To nie kwalifikacja — to system celowniczy. Dzięki temu wiem, które problemy warte są automatyzacji.',
+    'f.eye':'Zapis Zamknięcia','f.h':'Napisz<br>do mnie','f.name':'Twoje imię i nazwisko','f.email':'Twój e-mail','f.msg':'Wiadomość','f.btn':'Wyślij wiadomość →',
+    'f.note':'Wysyłka przez Twoją własną aplikację e-mail — nic nie jest zapisywane na tej stronie.',
+    'f.need':'Przed wysyłką potrzebne są wszystkie trzy pola.','f.sent':'Otwieram Twoją aplikację e-mail — kliknij tam „wyślij", a wiadomość trafi do mojej skrzynki.',
+    'f.sig':'Manifest zamknięty · Bilansowany codziennie · Podpisano, R.P.V.'
+  }};
+
+  function tmsg(key){
+    if(curLang==='en' || !T[curLang] || !T[curLang][key]){
+      return key==='f.need' ? 'All three fields are needed before dispatch.'
+           : 'Opening your email app — hit send there and it lands in my inbox.';
+    }
+    return T[curLang][key];
+  }
+
+  ITEMS.forEach(function(it){
+    var el = document.querySelector(it.s);
+    if(!el) return;
+    if(!(it.k in EN)) EN[it.k] = (it.t==='label') ? el.childNodes[0].nodeValue : el.innerHTML;
+  });
+
+  function applyLang(lang){
+    curLang = lang;
+    document.documentElement.lang = LANGTAG[lang] || 'en';
+    ITEMS.forEach(function(it){
+      var el = document.querySelector(it.s);
+      if(!el || !(it.k in EN)) return;
+      var val = (lang==='en') ? EN[it.k] : (T[lang] && T[lang][it.k]);
+      if(val == null) val = EN[it.k];
+      if(it.t==='label'){ el.childNodes[0].nodeValue = val.replace(/<[^>]*>/g,''); }
+      else { el.innerHTML = val; }
+    });
+    try { localStorage.setItem('rpv-lang', lang); } catch(e){}
+  }
+
+  var langbtn = document.getElementById('langbtn');
+  var langmenu = document.getElementById('langmenu');
+  function setLang(lang){
+    var item = langmenu.querySelector('button[data-lang="' + lang + '"]');
+    if(!item) return;
+    applyLang(lang);
+    langbtn.querySelector('.fwrap').innerHTML = item.querySelector('.flag').outerHTML;
+    langbtn.querySelector('.lcode').textContent = item.dataset.code;
+    langmenu.querySelectorAll('button').forEach(function(b){ b.classList.toggle('cur', b===item); });
+  }
+  function closeMenu(){ langmenu.hidden = true; langbtn.setAttribute('aria-expanded','false'); }
+  if(langbtn && langmenu){
+    langbtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = langmenu.hidden;
+      langmenu.hidden = !open;
+      langbtn.setAttribute('aria-expanded', String(open));
+    });
+    langmenu.addEventListener('click', function(e){
+      var b = e.target.closest('button[data-lang]');
+      if(b){ setLang(b.dataset.lang); closeMenu(); }
+    });
+    document.addEventListener('click', function(e){
+      if(!langmenu.hidden && !e.target.closest('#langdd')) closeMenu();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape' && !langmenu.hidden){ closeMenu(); langbtn.focus(); }
+    });
+    var saved = null;
+    try { saved = localStorage.getItem('rpv-lang'); } catch(e){}
+    if(saved && LANGTAG[saved] && saved!=='en') setLang(saved);
+  }
+})();
+</script>
+</body>
+</html>
