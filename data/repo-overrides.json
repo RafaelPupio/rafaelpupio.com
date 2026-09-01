@@ -1,0 +1,36 @@
+{
+  "_comment": "Curated copy per repo name. 'desc' may contain HTML (trusted, lives in this repo). 'skip': true hides a repo from the Shipping Log. Repos without an entry get their GitHub/GitLab description, auto-escaped.",
+  "MORDOMO": {
+    "stamp": "Tested",
+    "hot": true,
+    "meta": "TypeScript · GitHub",
+    "desc": "AI church secretary. A streaming chat interface driven by a single tool-using agent — knowledge search, calendar, prayer requests, human escalation — with RAG over pgvector and source citations. Document ingest runs as a multi-stage pipeline with extractor and verifier agents; back-office work (weekly AI reporting) goes multi-agent. Next.js · Postgres · Vercel AI SDK. Fully tested.",
+    "tags": ["AI Agents", "RAG", "pgvector", "Tool Use", "Multi-Agent Pipelines"]
+  },
+  "ChurchChatBox": {
+    "desc": "Secretaria Virtual — a WhatsApp church secretary bot (pt-BR). Automates the secretarial front desk over the channel Brazilian communities actually use. Next.js · PostgreSQL · Drizzle ORM.",
+    "tags": ["WhatsApp Bot", "Next.js", "PostgreSQL", "Drizzle", "pt-BR"]
+  },
+  "purged-walkforward": {
+    "stamp": "Shipped",
+    "hot": true,
+    "meta": "Python 100% · GitHub",
+    "desc": "Purged, embargoed walk-forward cross-validation for time series with overlapping labels. Shuffled K-fold lies on temporal data — look-ahead bias and label-overlap leakage inflate scores. This is the NumPy-only, scikit-learn-compatible fix: walk-forward ordering, purging, embargo periods, uniqueness weighting. Honest validation for models that trade.",
+    "tags": ["Machine Learning", "Time Series", "Cross-Validation", "scikit-learn", "NumPy"]
+  },
+  "service-watchdog": {
+    "stamp": "On Watch",
+    "hot": true,
+    "meta": "Python 100% · GitHub",
+    "desc": "Single-file, cross-platform service monitoring. Checks what you tell it to check, repairs only what is actually down, and reports outward — a dead-man's switch means a dead machine still raises an alarm.",
+    "tags": ["DevOps", "SRE", "Monitoring", "Self-Healing"]
+  },
+  "landing-page-cav": {
+    "stamp": "Live",
+    "desc": "Landing page for Comunidade Árvore da Vida (Lucas do Rio Verde, MT). Next.js 16 · React 19 · TypeScript, with all content in a single Zod-validated JSON config, a dev-only content editor, SEO and full accessibility. Tested and deploy-ready.",
+    "tags": ["Next.js 16", "React 19", "Zod", "SEO", "A11y"]
+  },
+  "rafaelpupio.com": {
+    "skip": true
+  }
+}
