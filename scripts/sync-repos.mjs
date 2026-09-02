@@ -113,6 +113,32 @@ const b = html.indexOf(END);
 if (a === -1 || b === -1) throw new Error('REPO-CARDS markers not found in index.html');
 html = html.slice(0, a + START.length) + '\n' + cards.join('\n') + '\n      ' + html.slice(b);
 
+// --- Classified Cargo: curated private-project cards from data/classified-cargo.html ---
+// Injected between its own markers AFTER the auto-managed repo cards, so the two
+// regions never touch. Bootstraps its markers on first run.
+const CC_START = '<!-- CLASSIFIED:START -->';
+const CC_END = '<!-- CLASSIFIED:END -->';
+try {
+  const cargo = readFileSync('data/classified-cargo.html', 'utf8').trim();
+  const block = CC_START + '\n' + cargo + '\n      ' + CC_END;
+  const c1 = html.indexOf(CC_START);
+  const c2 = html.indexOf(CC_END);
+  if (c1 !== -1 && c2 !== -1) {
+    html = html.slice(0, c1) + block + html.slice(c2 + CC_END.length);
+  } else {
+    const endIdx = html.indexOf(END);
+    html = html.slice(0, endIdx + END.length) + '\n      ' + block + html.slice(endIdx + END.length);
+  }
+} catch (e) {
+  console.warn('No classified cargo file, skipping:', e.message);
+}
+
+// --- One-time CSS self-heal: the hidden attribute must beat #langmenu{display:grid},
+// otherwise the language dropdown renders permanently open.
+if (!html.includes('#langmenu[hidden]')) {
+  html = html.replace('#langmenu {', '#langmenu[hidden] { display:none !important; }\n  #langmenu {');
+}
+
 const today = new Date().toISOString().slice(0, 10);
 html = html.replace(
   /(<span class="sync" id="sync-date">)[^<]*(<\/span>)/,
