@@ -5,32 +5,87 @@
     "hot": true,
     "meta": "TypeScript · GitHub",
     "desc": "AI church secretary. A streaming chat interface driven by a single tool-using agent — knowledge search, calendar, prayer requests, human escalation — with RAG over pgvector and source citations. Document ingest runs as a multi-stage pipeline with extractor and verifier agents; back-office work (weekly AI reporting) goes multi-agent. Next.js · Postgres · Vercel AI SDK. Fully tested.",
-    "tags": ["AI Agents", "RAG", "pgvector", "Tool Use", "Multi-Agent Pipelines"]
+    "tags": [
+      "AI Agents",
+      "RAG",
+      "pgvector",
+      "Tool Use",
+      "Multi-Agent Pipelines"
+    ]
   },
   "ChurchChatBox": {
     "desc": "Secretaria Virtual — a WhatsApp church secretary bot (pt-BR). Automates the secretarial front desk over the channel Brazilian communities actually use. Next.js · PostgreSQL · Drizzle ORM.",
-    "tags": ["WhatsApp Bot", "Next.js", "PostgreSQL", "Drizzle", "pt-BR"]
+    "tags": [
+      "WhatsApp Bot",
+      "Next.js",
+      "PostgreSQL",
+      "Drizzle",
+      "pt-BR"
+    ]
   },
   "purged-walkforward": {
     "stamp": "Shipped",
     "hot": true,
     "meta": "Python 100% · GitHub",
     "desc": "Purged, embargoed walk-forward cross-validation for time series with overlapping labels. Shuffled K-fold lies on temporal data — look-ahead bias and label-overlap leakage inflate scores. This is the NumPy-only, scikit-learn-compatible fix: walk-forward ordering, purging, embargo periods, uniqueness weighting. Honest validation for models that trade.",
-    "tags": ["Machine Learning", "Time Series", "Cross-Validation", "scikit-learn", "NumPy"]
+    "tags": [
+      "Machine Learning",
+      "Time Series",
+      "Cross-Validation",
+      "scikit-learn",
+      "NumPy"
+    ]
   },
   "service-watchdog": {
     "stamp": "On Watch",
     "hot": true,
     "meta": "Python 100% · GitHub",
     "desc": "Single-file, cross-platform service monitoring. Checks what you tell it to check, repairs only what is actually down, and reports outward — a dead-man's switch means a dead machine still raises an alarm.",
-    "tags": ["DevOps", "SRE", "Monitoring", "Self-Healing"]
+    "tags": [
+      "DevOps",
+      "SRE",
+      "Monitoring",
+      "Self-Healing"
+    ]
   },
   "landing-page-cav": {
     "stamp": "Live",
     "desc": "Landing page for Comunidade Árvore da Vida (Lucas do Rio Verde, MT). Next.js 16 · React 19 · TypeScript, with all content in a single Zod-validated JSON config, a dev-only content editor, SEO and full accessibility. Tested and deploy-ready.",
-    "tags": ["Next.js 16", "React 19", "Zod", "SEO", "A11y"]
+    "tags": [
+      "Next.js 16",
+      "React 19",
+      "Zod",
+      "SEO",
+      "A11y"
+    ]
   },
   "rafaelpupio.com": {
+    "stamp": "Self-Updating",
+    "hot": true,
+    "meta": "HTML / CSS / JS · GitHub",
+    "desc": "This site. Hand-written HTML/CSS/JS with zero dependencies, seven languages switched at runtime, and a GitHub Actions pipeline that pulls the GitHub &amp; GitLab APIs daily, HTML-escapes everything it fetches, auto-commits, and redeploys through Vercel.",
+    "tags": [
+      "GitHub Actions",
+      "Vanilla JS",
+      "i18n",
+      "CI/CD",
+      "Vercel"
+    ]
+  },
+  "Agents": {
+    "stamp": "New Cargo",
+    "hot": true,
+    "meta": "Markdown · GitHub",
+    "desc": "Reusable AI agents as self-contained, portable Markdown modules — no framework, no lock-in. First aboard: <b>ecoprompt</b>, an agent that turns rough ideas into refined briefs and optimizes costly prompts for coding agents. Each agent ships with its own system prompt, knowledge files and skills, portable across Claude Code, Claude Projects and Custom GPTs.",
+    "tags": [
+      "AI Agents",
+      "Prompt Engineering",
+      "Claude Code",
+      "Portable Skills",
+      "MIT"
+    ]
+  },
+  "RafaelPupio": {
     "skip": true
   }
 }
