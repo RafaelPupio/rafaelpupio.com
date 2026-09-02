@@ -48,6 +48,7 @@
   #langbtn:hover, #langbtn[aria-expanded="true"] { background:#B4B2AA; }
   #langbtn .car { font-size:9px; }
   .flag { width:22px; height:15px; display:block; outline:2px solid #211F1C; flex:none; }
+  #langmenu[hidden] { display:none !important; }
   #langmenu {
     position:absolute; top:100%; right:0; z-index:200; min-width:210px;
     background:#211F1C; border:3px solid #FF4D00; display:grid;
@@ -502,6 +503,14 @@
     <div class="repo-grid" id="repo-data">
       <!-- REPO-CARDS:START -->
       <article class="repo" data-reveal>
+        <span class="r-stamp hot">Self-Updating</span>
+        <h3><a href="https://github.com/RafaelPupio/rafaelpupio.com">rafaelpupio.com</a></h3>
+        <span class="r-meta">HTML / CSS / JS · GitHub</span>
+        <p>This site. Hand-written HTML/CSS/JS with zero dependencies, seven languages switched at runtime, and a GitHub Actions pipeline that pulls the GitHub &amp; GitLab APIs daily, HTML-escapes everything it fetches, auto-commits, and redeploys through Vercel.</p>
+        <div class="r-tags"><span>GitHub Actions</span><span>Vanilla JS</span><span>i18n</span><span>CI/CD</span><span>Vercel</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/rafaelpupio.com">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
         <span class="r-stamp hot">Live</span>
         <h3><a href="https://github.com/RafaelPupio/landing-page-cav">landing-page-cav</a></h3>
         <span class="r-meta">TypeScript · GitHub</span>
@@ -510,20 +519,20 @@
         <a class="inspect" href="https://github.com/RafaelPupio/landing-page-cav">Inspect →</a>
       </article>
       <article class="repo" data-reveal>
+        <span class="r-stamp hot">New Cargo</span>
+        <h3><a href="https://github.com/RafaelPupio/Agents">Agents</a></h3>
+        <span class="r-meta">Markdown · GitHub</span>
+        <p>Reusable AI agents as self-contained, portable Markdown modules — no framework, no lock-in. First aboard: <b>ecoprompt</b>, an agent that turns rough ideas into refined briefs and optimizes costly prompts for coding agents. Each agent ships with its own system prompt, knowledge files and skills, portable across Claude Code, Claude Projects and Custom GPTs.</p>
+        <div class="r-tags"><span>AI Agents</span><span>Prompt Engineering</span><span>Claude Code</span><span>Portable Skills</span><span>MIT</span></div>
+        <a class="inspect" href="https://github.com/RafaelPupio/Agents">Inspect →</a>
+      </article>
+      <article class="repo" data-reveal>
         <span class="r-stamp">★ 1</span>
         <h3><a href="https://github.com/RafaelPupio/ChurchChatBox">ChurchChatBox</a></h3>
         <span class="r-meta">TypeScript · ★ 1 · GitHub</span>
         <p>Secretaria Virtual — a WhatsApp church secretary bot (pt-BR). Automates the secretarial front desk over the channel Brazilian communities actually use. Next.js · PostgreSQL · Drizzle ORM.</p>
         <div class="r-tags"><span>WhatsApp Bot</span><span>Next.js</span><span>PostgreSQL</span><span>Drizzle</span><span>pt-BR</span></div>
         <a class="inspect" href="https://github.com/RafaelPupio/ChurchChatBox">Inspect →</a>
-      </article>
-      <article class="repo" data-reveal>
-        <span class="r-stamp">Shipped</span>
-        <h3><a href="https://github.com/RafaelPupio/RafaelPupio">RafaelPupio</a></h3>
-        <span class="r-meta">GitHub</span>
-        <p>Profile README</p>
-        <div class="r-tags"></div>
-        <a class="inspect" href="https://github.com/RafaelPupio/RafaelPupio">Inspect →</a>
       </article>
       <article class="repo" data-reveal>
         <span class="r-stamp hot">On Watch</span>
@@ -558,6 +567,72 @@
         <a class="inspect" href="https://gitlab.com/RafaelPupio" style="color:inherit">Inspect →</a>
       </article>
       <!-- REPO-CARDS:END -->
+      <!-- CLASSIFIED:START -->
+<style>
+  /* Classified Cargo — self-contained styles, injected together with the cards */
+  .cc-div{grid-column:1/-1;background:repeating-linear-gradient(-45deg,#211F1C 0 14px,#2b2926 14px 28px);color:#FF4D00;font-family:'Saira Stencil One',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:16px 18px;font-size:clamp(15px,2vw,22px);display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;}
+  .cc-div small{font-family:'IBM Plex Mono',monospace;color:#B4B2AA;font-size:10px;letter-spacing:.2em;font-weight:700;}
+  .cc-name{display:inline-block;filter:blur(6px) saturate(0);opacity:.9;user-select:none;pointer-events:none;animation:cc-flicker 4s steps(3) infinite;}
+  @keyframes cc-flicker{0%,86%{filter:blur(6px) saturate(0);transform:none}89%{filter:blur(4px) saturate(0);transform:translateX(1px)}93%{filter:blur(7px) saturate(0)}97%{filter:blur(5px) saturate(0);transform:translateX(-1px)}100%{filter:blur(6px) saturate(0)}}
+  @media (prefers-reduced-motion:reduce){.cc-name{animation:none;}}
+  .cc-rows{margin-top:2px;}
+  .cc-row{display:grid;grid-template-columns:104px 1fr;gap:10px;padding:8px 0;border-top:1px solid rgba(180,178,170,.25);font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.75;}
+  .cc-row .k{color:#FF4D00;letter-spacing:.16em;text-transform:uppercase;font-size:10px;font-weight:700;}
+  @media (max-width:640px){.cc-row{grid-template-columns:1fr;gap:2px;}}
+</style>
+<div class="cc-div"><span>◤ Classified Cargo</span><small>Private holds · tools &amp; process declared · contents sealed · inspection via contact</small></div>
+<article class="repo lab" data-reveal>
+  <span class="r-stamp">Classified</span>
+  <h3>Vessel 01 · <span class="cc-name" aria-label="redacted">KX-94 DELTA</span></h3>
+  <span class="r-meta">ML Trading Programme · Python · MQL5 · 3 private repos</span>
+  <p>An end-to-end algorithmic trading programme built on one thesis: history's famous algo-trading disasters were operational failures at machine speed, not bad forecasts — so the model is never allowed to be the last line of defense.</p>
+  <div class="cc-rows">
+    <div class="cc-row"><span class="k">Signal layer</span><span>Python · pandas / NumPy feature pipelines · gradient-boosted tree models · news &amp; sentiment ingestion · scheduled retraining behind an out-of-sample validation gate · ONNX-ready deployment</span></div>
+    <div class="cc-row"><span class="k">Governance</span><span>MQL5 Expert Advisor on MetaTrader 5 that treats every signal as untrusted: risk-% position sizing, hard daily-loss cutoff, signal-staleness guard, news-blackout windows, human kill-switch, append-only audit trail</span></div>
+    <div class="cc-row"><span class="k">Science</span><span>Pre-registered cross-market replication (forex → B3 index/dollar futures) · frozen rulesets · live trials register · statistical power analysis before any edge claim — validation tooling open-sourced as purged-walkforward</span></div>
+    <div class="cc-row"><span class="k">Architecture</span><span>Model and execution run as two isolated processes over fault-tolerant IPC — no forecast can bypass a risk limit</span></div>
+  </div>
+  <div class="r-tags"><span>Python</span><span>MQL5 / MT5</span><span>Gradient Boosting</span><span>Feature Engineering</span><span>Risk Governance</span><span>Experimental Design</span></div>
+</article>
+<article class="repo lab" data-reveal>
+  <span class="r-stamp">Classified</span>
+  <h3>Vessel 02 · <span class="cc-name" aria-label="redacted">MR-7 SIGMA</span></h3>
+  <span class="r-meta">AI Finance Platform · TypeScript · Python · Monorepo</span>
+  <p>A personal + business finance platform whose core engineering problem is trust: LLMs are probabilistic, money is not.</p>
+  <div class="cc-rows">
+    <div class="cc-row"><span class="k">Invariant</span><span>LLM document parser (PDF / OFX bank statements) wrapped in an arithmetic proof — an import is rejected unless the extracted entries reconcile to the statement's own declared closing balance, to the cent</span></div>
+    <div class="cc-row"><span class="k">Stack</span><span>TypeScript monorepo · Expo / React Native client (Android + iOS) that renders but never computes · pure-TS financial core with signed integer-cent arithmetic (zero floats) · Python FastAPI ingestion service · PostgreSQL on Supabase</span></div>
+    <div class="cc-row"><span class="k">Security</span><span>Default-deny row-level security on every table with user-scoped policies · dedicated RLS test suite against Postgres in Docker · anonymized fixtures only — no real financial documents ever enter the repo</span></div>
+    <div class="cc-row"><span class="k">Process</span><span>Spec-first development — approved design specs and implementation plans versioned in-repo · GitHub Actions CI</span></div>
+  </div>
+  <div class="r-tags"><span>LLM Parsing</span><span>FastAPI</span><span>React Native / Expo</span><span>PostgreSQL · RLS</span><span>Supabase</span><span>TypeScript</span></div>
+</article>
+<article class="repo lab" data-reveal>
+  <span class="r-stamp">Classified</span>
+  <h3>Vessel 03 · <span class="cc-name" aria-label="redacted">BQ-40 NOVA</span></h3>
+  <span class="r-meta">Social Habit Platform · Web + Mobile</span>
+  <p>A group-challenge product shipped twice — web and native — with the engagement mechanics designed from scratch, not copied.</p>
+  <div class="cc-rows">
+    <div class="cc-row"><span class="k">Web</span><span>Vite + React SPA · component-state architecture · zero-backend demo mode seeded through localStorage</span></div>
+    <div class="cc-row"><span class="k">Mobile</span><span>Expo / TypeScript React Native sibling app sharing the product logic</span></div>
+    <div class="cc-row"><span class="k">Mechanics</span><span>Streak algorithms · tie-aware leaderboards · daily-rotating content · reaction feeds · group statistics</span></div>
+    <div class="cc-row"><span class="k">Ops</span><span>GitHub Actions CI on both repos</span></div>
+  </div>
+  <div class="r-tags"><span>React</span><span>Vite</span><span>Expo</span><span>TypeScript</span><span>Product Engineering</span><span>CI</span></div>
+</article>
+<article class="repo lab" data-reveal>
+  <span class="r-stamp">Classified</span>
+  <h3>Vessel 04 · <span class="cc-name" aria-label="redacted">CB-1 ORACLE</span></h3>
+  <span class="r-meta">Agentic Infrastructure · Cross-machine</span>
+  <p>The infrastructure that makes every project above move faster. AI coding agents are stateless — so their memory has to be engineered.</p>
+  <div class="cc-rows">
+    <div class="cc-row"><span class="k">Memory</span><span>Version-controlled Obsidian vault as durable agent context — decision logs, status files, and research notes, all cross-linked</span></div>
+    <div class="cc-row"><span class="k">Hygiene</span><span>Log-rotation policies tuned to token budgets · present-tense-only status files · single-source agent configuration shared across Claude Code and other coding agents</span></div>
+    <div class="cc-row"><span class="k">Bootstrap</span><span>One shell script restores the complete agent environment on any machine · a handoff protocol lets any fresh session resume mid-project with full context</span></div>
+  </div>
+  <div class="r-tags"><span>Context Engineering</span><span>Agent Memory</span><span>Obsidian</span><span>Shell</span><span>Git</span><span>Claude Code</span></div>
+</article>
+      <!-- CLASSIFIED:END -->
     </div>
   </div>
 </section>
