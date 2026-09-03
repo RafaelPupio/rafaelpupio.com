@@ -133,6 +133,33 @@ try {
   console.warn('No classified cargo file, skipping:', e.message);
 }
 
+// --- Credentials: full diploma & certification record from data/credentials.html ---
+// The #certs rows are sourced from that file so the live site always carries every
+// diploma and certification. Bootstraps its markers on first run by replacing the
+// original rows container inside <section id="certs">.
+const CR_START = '<!-- CREDENTIALS:START -->';
+const CR_END = '<!-- CREDENTIALS:END -->';
+try {
+  const rows = readFileSync('data/credentials.html', 'utf8').replace(/\s+$/, '');
+  const block = `${CR_START}\n    <div>\n${rows}\n    </div>\n    ${CR_END}`;
+  const r1 = html.indexOf(CR_START);
+  const r2 = html.indexOf(CR_END);
+  if (r1 !== -1 && r2 !== -1) {
+    html = html.slice(0, r1) + block + html.slice(r2 + CR_END.length);
+  } else {
+    const certsIdx = html.indexOf('<section class="folio" id="certs">');
+    if (certsIdx !== -1) {
+      const rowsStart = html.indexOf('    <div>\n      <div class="lrow"', certsIdx);
+      const sectionEnd = html.indexOf('</section>', certsIdx);
+      if (rowsStart !== -1 && sectionEnd !== -1 && rowsStart < sectionEnd) {
+        html = html.slice(0, rowsStart) + '    ' + block + '\n  </div>\n' + html.slice(sectionEnd);
+      }
+    }
+  }
+} catch (e) {
+  console.warn('No credentials file, skipping:', e.message);
+}
+
 // --- One-time CSS self-heal: the hidden attribute must beat #langmenu{display:grid},
 // otherwise the language dropdown renders permanently open.
 if (!html.includes('#langmenu[hidden]')) {
