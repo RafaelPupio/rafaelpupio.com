@@ -160,6 +160,26 @@ try {
   console.warn('No credentials file, skipping:', e.message);
 }
 
+// --- Credentials section: note + one-time i18n migration ---
+// The rows now carry course content and the tools applied, so they stay in English
+// (same rule as the repo cards). Both edits are idempotent no-ops after the first run.
+const CERT_NOTE_OLD = '<p class="secnote">Full record on <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>.</p>';
+const CERT_NOTE_NEW = '<p class="secnote">What each course covered, and where the tools are applied. Full record on <a href="https://www.linkedin.com/in/rafaelpupiovieira/" target="_blank" rel="noopener noreferrer">LinkedIn — /in/rafaelpupiovieira</a>. Credential details stay in English.</p>';
+if (html.includes(CERT_NOTE_OLD)) html = html.replace(CERT_NOTE_OLD, CERT_NOTE_NEW);
+html = html.replace(/\n *\{s:'#certs \.lrow[^\n]*\},/g, '');
+const CERT_NOTE_I18N = [
+  ['Histórico completo no', 'O que cada formação cobriu e onde as ferramentas são aplicadas. Histórico completo no', ' Os detalhes das credenciais permanecem em inglês.'],
+  ['Historial completo en', 'Qué cubrió cada formación y dónde se aplican las herramientas. Historial completo en', ' Los detalles de las credenciales permanecen en inglés.'],
+  ['Parcours complet sur', 'Ce que chaque formation a couvert et où les outils sont appliqués. Parcours complet sur', ' Les détails des références restent en anglais.'],
+  ['Vollständiger Werdegang auf', 'Was jede Ausbildung umfasste und wo die Werkzeuge angewendet werden. Vollständiger Werdegang auf', ' Die Details der Nachweise bleiben auf Englisch.'],
+  ['Percorso completo su', 'Che cosa ha coperto ogni formazione e dove sono applicati gli strumenti. Percorso completo su', ' I dettagli delle credenziali restano in inglese.'],
+  ['Pełna historia na', 'Czego dotyczyło każde szkolenie i gdzie stosowane są narzędzia. Pełna historia na', ' Szczegóły kwalifikacji pozostają po angielsku.'],
+];
+for (const [oldPrefix, newPrefix, tail] of CERT_NOTE_I18N) {
+  const rx = new RegExp("'c\\.n':'" + oldPrefix + "([^']*)'", 'g');
+  html = html.replace(rx, (_m, rest) => "'c.n':'" + newPrefix + rest + tail + "'");
+}
+
 // --- One-time CSS self-heal: the hidden attribute must beat #langmenu{display:grid},
 // otherwise the language dropdown renders permanently open.
 if (!html.includes('#langmenu[hidden]')) {
