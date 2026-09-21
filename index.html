@@ -421,10 +421,10 @@
     <p class="subline" style="margin-top:14px;opacity:.8">US · Italian · Brazilian citizen — plus simplified Mercosur residency rights across South America</p>
     <p class="subline"><b>AI Engineer</b> building <span class="hot">agents &amp; automation</span> on <b>10+ years</b> in administration, operations &amp; financial operations</p>
     <div class="totals">
-      <div class="tot"><div class="v"><span data-count="10">0</span><span class="unit">+</span></div><div class="k">Yrs admin · ops · financial ops</div></div>
-      <div class="tot"><div class="v"><span data-count="3">0</span></div><div class="k">AI certifications</div></div>
-      <div class="tot"><div class="v"><span data-count="3">0</span></div><div class="k">Citizenships</div></div>
-      <div class="tot"><div class="v"><span data-count="1">0</span></div><div class="k">Trading agent — retrains daily</div></div>
+      <div class="tot"><div class="v"><span data-count="10">10</span><span class="unit">+</span></div><div class="k">Yrs admin · ops · financial ops</div></div>
+      <div class="tot"><div class="v"><span data-count="3">3</span></div><div class="k">AI certifications</div></div>
+      <div class="tot"><div class="v"><span data-count="3">3</span></div><div class="k">Citizenships</div></div>
+      <div class="tot"><div class="v"><span data-count="1">1</span></div><div class="k">Trading agent — retrains daily</div></div>
     </div>
   </div>
   <div class="stamp" id="herostamp">Builds Daily</div>
@@ -681,12 +681,12 @@
       </div>
       <div class="lrow" data-reveal>
         <span class="rno">4.2</span>
-        <div class="rmain"><b>Associate Degree in Full-Stack Software Development</b><p>2021–2023. Two-year degree in front-end, back-end and database engineering. Applied across the public repos: TypeScript, Next.js and React, PostgreSQL with Drizzle ORM, REST and server routes, Zod-validated configs, and CI on GitHub Actions.</p></div>
+        <div class="rmain"><b>Associate Degree in Full-Stack Software Development</b><p>2020–2022. Two-year degree in front-end, back-end and database engineering. Applied across the public repos: TypeScript, Next.js and React, PostgreSQL with Drizzle ORM, REST and server routes, Zod-validated configs, and CI on GitHub Actions.</p></div>
         <span class="rval hot">Verified</span>
       </div>
       <div class="lrow" data-reveal>
         <span class="rno">4.3</span>
-        <div class="rmain"><b>Bachelor&#39;s Degree in Theology</b><p>Fatin, 2015. Exegesis, hermeneutics, historical research and academic writing. Applied as domain expertise behind MORDOMO and ChurchChatBox — knowledge-base structuring, source-cited RAG answers, and pt-BR content design for church operations.</p></div>
+        <div class="rmain"><b>Bachelor&#39;s Degree in Theology</b><p>Fatin, 2012–2016. Exegesis, hermeneutics, historical research and academic writing. Applied as domain expertise behind MORDOMO and ChurchChatBox — knowledge-base structuring, source-cited RAG answers, and pt-BR content design for church operations.</p></div>
         <span class="rval hot">Verified</span>
       </div>
       <div class="lgroup">Certifications &amp; Licenses<small>Newest first</small></div>
@@ -779,6 +779,8 @@
     });
   },{threshold:.2});
 
+  /* counters ship their real value in the HTML (crawlers, link previews, no-JS); with JS and motion allowed, reset to 0 so they count up on reveal */
+  if(!reduced){ document.querySelectorAll('[data-count]').forEach(function(el){ el.textContent = '0'; }); }
   document.querySelectorAll('[data-reveal],#herostamp,[data-count]').forEach(function(el){ io.observe(el); });
 
   function countUp(el){
